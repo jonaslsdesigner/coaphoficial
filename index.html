@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>COAPH – Cooperativa de Atendimento Pré e Hospitalar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="container topbar__inner">
+      <a href="#" class="topbar__logo">
+        <img src="assets/logotipo/coaph logo branco.png" alt="COAPH" class="topbar__logo-img" />
+      </a>
+      <div class="topbar__search">
+        <input type="text" placeholder="Pesquisar..." />
+        <button aria-label="Buscar">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </button>
+      </div>
+      <div class="topbar__socials">
+        <a href="#" aria-label="Instagram">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+        <a href="#" aria-label="Facebook">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </a>
+        <a href="#" aria-label="TikTok">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="container navbar__inner">
+      <ul class="navbar__menu">
+        <li><a href="#">Início</a></li>
+        <li class="has-dropdown">
+          <a href="#">Quem Somos <span class="arrow">▾</span></a>
+          <ul class="dropdown">
+            <li><a href="#">Sobre</a></li>
+            <li><a href="#">Nossas Sedes</a></li>
+            <li><a href="#">Cooperativismo</a></li>
+          </ul>
+        </li>
+        <li class="has-dropdown">
+          <a href="#">Área do Cooperado <span class="arrow">▾</span></a>
+          <ul class="dropdown">
+            <li><a href="#">Pré-Cadastro</a></li>
+            <li><a href="#">Portal do Cooperado</a></li>
+            <li><a href="#">Termo de Adesão</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Governança Cooperativa</a></li>
+        <li><a href="#">Fala do Presidente</a></li>
+        <li><a href="#">Clube Coaph+</a></li>
+        <li><a href="#">NEP</a></li>
+        <li><a href="#">Blog</a></li>
+        <li class="has-dropdown">
+          <a href="#">Fale Conosco <span class="arrow">▾</span></a>
+          <ul class="dropdown">
+            <li><a href="#">Trabalhe Conosco</a></li>
+            <li><a href="#">Ouvidoria</a></li>
+            <li><a href="#">Canal de Ética</a></li>
+          </ul>
+        </li>
+      </ul>
+      <button class="navbar__burger" id="burger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+
+  <!-- TOP BANNER ROTATIVO -->
+  <div class="top-banner" id="topBanner">
+    <div class="top-banner__track">
+
+      <!-- Slide 1 -->
+      <div class="top-banner__slide active" data-editable="top-banner">
+        <img src="assets/banners/inicio/rotativos/01.webp" alt="Banner 1" />
+        <div class="top-banner__content top-banner__content--dark">
+          <div class="container">
+            <p class="top-banner__subtitle tb1__subtitle">SEJA BEM-VINDOS!</p>
+            <h2 class="top-banner__title tb1__title">Ficamos felizes<br>em ter <span style="color:#96020F">você</span><br><span>conosco!</span></h2>
+            <p class="top-banner__desc top-banner__desc--dark">Aqui, você faz parte de uma cooperativa que cuida de pessoas.</p>
+            <a href="#" class="top-banner__cta">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;min-width:16px"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+              Conte com a COAPH!
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="top-banner__slide" data-editable="top-banner">
+        <img src="assets/banners/inicio/rotativos/03.webp" alt="Banner 2" />
+        <div class="top-banner__content top-banner__content--light">
+          <div class="container">
+            <svg class="tb2__icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="12" y2="17"/></svg>
+            <p class="top-banner__subtitle top-banner__subtitle--spaced">COMUNICADO IMPORTANTE</p>
+            <h2 class="top-banner__title">Atualização nas Cooperações</h2>
+            <p class="top-banner__desc">Informações relevantes sobre ajustes e atualizações em nossa rede de cooperações e parceiros de atendimento.</p>
+            <a href="#" class="top-banner__cta top-banner__cta--white">Saiba mais</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="top-banner__slide" data-editable="top-banner">
+        <img src="assets/banners/inicio/rotativos/02.webp" alt="Banner 3" />
+        <div class="top-banner__content top-banner__content--light">
+          <div class="container">
+            <p class="top-banner__subtitle top-banner__subtitle--spaced">Cuidado que se espalha, presença que faz a diferença</p>
+            <h2 class="top-banner__title">Onde estamos?</h2>
+            <p class="top-banner__desc">A COAPH está presente em diversas regiões, levando saúde e bem-estar para mais pessoas todos os dias.</p>
+            <div class="top-banner__stats">
+              <div class="top-banner__stat">
+                <strong>+250 MIL</strong>
+                <span>vidas cuidadas</span>
+              </div>
+              <div class="top-banner__stat-divider"></div>
+              <div class="top-banner__stat">
+                <strong>+30</strong>
+                <span>municípios atendidos</span>
+              </div>
+              <div class="top-banner__stat-divider"></div>
+              <div class="top-banner__stat">
+                <strong>+40</strong>
+                <span>anos de história</span>
+              </div>
+            </div>
+            <a href="#" class="top-banner__link">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+              Veja todas as unidades e canais de atendimento.
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <button class="top-banner__arrow top-banner__arrow--prev" id="topBannerPrev" aria-label="Banner anterior">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <button class="top-banner__arrow top-banner__arrow--next" id="topBannerNext" aria-label="Próximo banner">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+    <div class="top-banner__dots">
+      <button class="top-banner__dot active" aria-label="Banner 1"></button>
+      <button class="top-banner__dot" aria-label="Banner 2"></button>
+      <button class="top-banner__dot" aria-label="Banner 3"></button>
+    </div>
+  </div>
+
+  <!-- MARQUEE STRIP -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__inner">
+      <div class="marquee__track">
+        <span class="marquee__item">Valorização Profissional</span><span class="marquee__sep">✦</span>
+        <span class="marquee__item">Segurança</span><span class="marquee__sep">✦</span>
+        <span class="marquee__item">Colaboração</span><span class="marquee__sep">✦</span>
+        <span class="marquee__item">Propósito</span><span class="marquee__sep">✦</span>
+        <span class="marquee__item">Evolução</span><span class="marquee__sep">✦</span>
+        <span class="marquee__item">Qualificação</span><span class="marquee__sep">✦</span>
+        <span class="marquee__item">Sustentabilidade</span><span class="marquee__sep">✦</span>
+        <span class="marquee__item">Pertencimento</span><span class="marquee__sep">✦</span>
+        <span class="marquee__item">Desenvolvimento</span><span class="marquee__sep">✦</span>
+        <span class="marquee__item">Cooperativismo</span><span class="marquee__sep">✦</span>
+        <span class="marquee__item">Valorização Profissional</span><span class="marquee__sep">✦</span>
+        <span class="marquee__item">Segurança</span><span class="marquee__sep">✦</span>
+        <span class="marquee__item">Colaboração</span><span class="marquee__sep">✦</span>
+        <span class="marquee__item">Propósito</span><span class="marquee__sep">✦</span>
+        <span class="marquee__item">Evolução</span><span class="marquee__sep">✦</span>
+        <span class="marquee__item">Qualificação</span><span class="marquee__sep">✦</span>
+        <span class="marquee__item">Sustentabilidade</span><span class="marquee__sep">✦</span>
+        <span class="marquee__item">Pertencimento</span><span class="marquee__sep">✦</span>
+        <span class="marquee__item">Desenvolvimento</span><span class="marquee__sep">✦</span>
+        <span class="marquee__item">Cooperativismo</span><span class="marquee__sep">✦</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUEM SOMOS / ABOUT -->
+  <section class="about" id="sobre">
+    <div class="container about__inner">
+      <div class="about__images">
+        <div class="about__mosaic">
+          <div class="about__img about__img--tall" data-lightbox="0"><img src="assets/banners/inicio/Transformando a Saúde/01.png" alt="Foto 1" /></div>
+          <div class="about__img about__img--tall" data-lightbox="1"><img src="assets/banners/inicio/Transformando a Saúde/02.png" alt="Foto 2" /></div>
+          <div class="about__img about__img--short" data-lightbox="2"><img src="assets/banners/inicio/Transformando a Saúde/03.jpeg" alt="Foto 3" /></div>
+          <div class="about__img about__img--short" data-lightbox="3"><img src="assets/banners/inicio/Transformando a Saúde/04.png" alt="Foto 4" /></div>
+        </div>
+      </div>
+      <div class="about__content">
+        <p class="section-label">// Quem Somos</p>
+        <h2 class="about__headline">Transformando a <span>Saúde</span><br/>em Cooperativismo</h2>
+        <p class="about__text">Fundada em 2009 por sete médicos comprometidos com a transformação da saúde, a COAPH é sinônimo de inovação, excelência e sustentabilidade. Nossa missão é oferecer serviços de saúde com qualidade, promovendo oportunidades e otimizando recursos de forma sustentável.</p>
+        <div class="about__stats">
+          <div class="about__stat"><strong>+47 mil</strong><span>Cooperados</span></div>
+          <div class="about__stat"><strong>+180</strong><span>Contratos</span></div>
+          <div class="about__stat"><strong>100%</strong><span>Foco no Cooperado</span></div>
+        </div>
+        <a href="#" class="btn btn--red">Saiba Mais</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOSSOS VALORES / SERVICES CARDS -->
+  <section class="services" id="valores">
+    <div class="container">
+      <div class="services__header">
+        <div class="services__header-left">
+          <p class="section-label">// Nossos Valores</p>
+          <h2 class="services__headline">Valores que fazem<br><span>a Diferença!</span></h2>
+          <a href="#" class="services__view-all">Ver Todos →</a>
+        </div>
+        <div class="services__header-img">
+          <img src="assets/banners/Valores que Fazem a Diferença/Restaura_a_foto_da_nossa_202606151753.jpeg" alt="Nossos Valores" />
+        </div>
+      </div>
+      <div class="services__grid">
+        <div class="service-card">
+          <div class="service-card__icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="3" x2="12" y2="20"/><path d="M9 21h6"/><path d="M4 7h16"/><path d="M4 7l-2 7a4 4 0 0 0 4 0l-2-7"/><path d="M20 7l-2 7a4 4 0 0 0 4 0l-2-7"/></svg></div>
+          <h3 class="service-card__title">Legalidade Jurídica</h3>
+          <p class="service-card__desc">Segurança e respaldo legal para todas as suas atividades profissionais como cooperado na área da saúde.</p>
+          <a href="#" class="service-card__link">Saiba mais →</a>
+        </div>
+        <div class="service-card">
+          <div class="service-card__icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11h3l2 -2 3 3 2 -2 2 2h3"/><path d="M4 11v4l2 2 1 1 4 2 4 -2 1 -1 2 -2v-4"/><path d="M10 9v2"/><path d="M14 9v2"/></svg></div>
+          <h3 class="service-card__title">Valorização Profissional</h3>
+          <p class="service-card__desc">Programas de incentivo que reconhecem e desenvolvem continuamente nossos cooperados em todo o Brasil.</p>
+          <a href="#" class="service-card__link">Saiba mais →</a>
+        </div>
+        <div class="service-card">
+          <div class="service-card__icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg></div>
+          <h3 class="service-card__title">Garantias por Lei</h3>
+          <p class="service-card__desc">Benefícios e garantias sólidas asseguradas pela legislação cooperativista brasileira para todos os associados.</p>
+          <a href="#" class="service-card__link">Saiba mais →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMO FUNCIONA / WORK PROCESS -->
+  <section class="process" id="como-funciona">
+    <div class="container">
+      <div class="process__top">
+        <p class="section-label">// Como Funciona</p>
+        <h2 class="process__headline">Nosso Processo <span>Comprovado</span></h2>
+      </div>
+      <div class="process__steps">
+        <div class="process__step">
+          <div class="process__icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M9 14l2 2 4-4"/></svg>
+            <span class="process__num">01</span>
+          </div>
+          <h4>Pré-Cadastro</h4>
+          <p>Inicie sua jornada realizando o pré-cadastro no portal digital de forma rápida.</p>
+        </div>
+        <div class="process__step">
+          <div class="process__icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a6 6 0 0 1 12 0v2"/></svg>
+            <span class="process__num">02</span>
+          </div>
+          <h4>Portal do Cooperado</h4>
+          <p>Acesse o portal exclusivo com todas as ferramentas para gerenciar sua cooperação.</p>
+        </div>
+        <div class="process__step">
+          <div class="process__icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+            <span class="process__num">03</span>
+          </div>
+          <h4>Termo de Adesão</h4>
+          <p>Assine o termo e torne-se oficialmente um cooperado COAPH com todos os direitos.</p>
+        </div>
+        <div class="process__step">
+          <div class="process__icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="6" r="3"/><path d="M6 21v-2a5 5 0 0 1 10 0v2"/><path d="M15 9.5c0 0 .5 2 2 2.5"/><circle cx="17.5" cy="13" r="1.5" fill="currentColor" stroke="none"/></svg>
+            <span class="process__num">04</span>
+          </div>
+          <h4>Atuação Profissional</h4>
+          <p>Comece a atuar com suporte completo e o respaldo jurídico da COAPH.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ÚLTIMAS NOTÍCIAS -->
+  <section class="noticias" id="noticias">
+    <div class="container">
+      <div class="noticias__header">
+        <h2 class="noticias__headline">Últimas <span>Notícias</span></h2>
+      </div>
+      <div class="noticias__grid">
+        <article class="noticias__card">
+          <div class="noticias__thumb">
+            <span class="noticias__tag noticias__tag--dark">UNCATEGORIZED</span>
+            <img src="assets/banners/inicio/ultimas noticias/01.png" alt="Hospital Hdoc: Serviço completo de Traumatologia" class="noticias__img" />
+          </div>
+          <div class="noticias__body">
+            <h3>Hospital Hdoc: Serviço completo de Traumatologia</h3>
+            <a href="#" class="noticias__link">SAIBA MAIS</a>
+            <p class="noticias__meta">Janeiro 27, 2025 &bull; Nenhum comentário</p>
+          </div>
+        </article>
+        <article class="noticias__card">
+          <div class="noticias__thumb">
+            <span class="noticias__tag noticias__tag--dark">SAÚDE</span>
+            <img src="assets/banners/inicio/ultimas noticias/02.png" alt="Hdoc Lar, conheça nossos serviços" class="noticias__img" />
+          </div>
+          <div class="noticias__body">
+            <h3>Hdoc Lar, conheça nossos serviços</h3>
+            <a href="#" class="noticias__link">SAIBA MAIS</a>
+            <p class="noticias__meta">Janeiro 27, 2025 &bull; Nenhum comentário</p>
+          </div>
+        </article>
+        <article class="noticias__card">
+          <div class="noticias__thumb">
+            <span class="noticias__tag noticias__tag--dark">SAÚDE</span>
+            <img src="assets/banners/inicio/ultimas noticias/03.png" alt="Especialidades Hdoc Clínicas" class="noticias__img" />
+          </div>
+          <div class="noticias__body">
+            <h3>Especialidades Hdoc Clínicas</h3>
+            <a href="#" class="noticias__link">SAIBA MAIS</a>
+            <p class="noticias__meta">Janeiro 24, 2025 &bull; Nenhum comentário</p>
+          </div>
+        </article>
+      </div>
+      <div class="noticias__more">
+        <a href="#" class="btn noticias__more-btn">Mais notícias aqui</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAPA -->
+  <section class="mapa" id="mapa">
+    <div class="mapa__placeholder" id="mapaPlaceholder">
+      <img src="assets/banners/inicio/maps/image.png" alt="Ver no mapa" class="mapa__placeholder-img" />
+      <div class="mapa__placeholder-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        Ver no mapa
+      </div>
+    </div>
+    <iframe
+      id="mapaIframe"
+      class="mapa__iframe"
+      src=""
+      data-src="https://maps.google.com/maps?q=Rua+Joaquim+Sá,+538,+Joaquim+Távora,+Fortaleza,+CE,+Brasil&output=embed&hl=pt-BR&z=16"
+      width="100%"
+      height="400"
+      style="border:0;"
+      allowfullscreen
+      referrerpolicy="no-referrer-when-downgrade"
+      title="Localização COAPH – R. Joaquim Sá, 538, Fortaleza-CE">
+    </iframe>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div class="footer__col">
+        <h4>Institucional</h4>
+        <ul>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Pré-Cadastro</a></li>
+          <li><a href="#">Trabalhe Conosco</a></li>
+        </ul>
+        <div class="footer__logo-mark">
+          <img src="assets/logotipo/coaph logo branco.png" alt="COAPH" class="footer__logo-img" />
+        </div>
+      </div>
+      <div class="footer__col">
+        <h4>Entre em contato</h4>
+        <p>Telefone: <a href="tel:08530393030">(85) 3039-3030</a></p>
+        <p>E-mail: <a href="mailto:faleconosco@coaph.com.br">faleconosco@coaph.com.br</a></p>
+        <p class="footer__address">MATRIZ – Rua Joaquim Sá, 538 – Joaquim Távora – Fortaleza – CE, 60135-218 CNPJ: 11.769.319/0001-88</p>
+      </div>
+      <div class="footer__col footer__newsletter">
+        <h4>Assine nossa Newsletter</h4>
+        <div class="newsletter__form">
+          <input type="text" placeholder="Nome" />
+          <input type="email" placeholder="E-mail" />
+          <label class="newsletter__check">
+            <input type="checkbox" />
+            <span>Aceito receber e-mails promocionais da Coaph</span>
+          </label>
+          <button class="btn btn--red btn--full">Assinar newsletter</button>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>Coaph 2026 © Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Float -->
+  <a href="https://wa.me/558530393030" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+  </a>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <div class="lightbox__overlay" id="lightboxOverlay"></div>
+    <div class="lightbox__box">
+      <button class="lightbox__close" id="lightboxClose" aria-label="Fechar">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <button class="lightbox__arrow lightbox__arrow--prev" id="lightboxPrev" aria-label="Anterior">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <img class="lightbox__img" id="lightboxImg" src="" alt="" />
+      <button class="lightbox__arrow lightbox__arrow--next" id="lightboxNext" aria-label="Próxima">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+      <div class="lightbox__thumbs" id="lightboxThumbs"></div>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
