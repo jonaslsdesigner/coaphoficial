@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Governança Cooperativa – COAPH</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css?v=10" />
+  <style>
+    /* ─── GOVERNANÇA COOPERATIVA — page styles ─── */
+
+    /* INTRO */
+    .gv-intro { padding: 88px 0 80px; background: #fff; }
+    .gv-intro__inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+    }
+    .gv-intro__eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--red-light);
+      color: var(--red);
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 40px;
+      margin-bottom: 22px;
+    }
+    .gv-intro__title {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 3vw, 2.3rem);
+      font-weight: 900;
+      color: var(--gray-800);
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+    .gv-intro__title span { color: var(--red); }
+    .gv-intro__text {
+      font-size: .95rem;
+      color: var(--gray-600);
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+    .gv-intro__visual {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .gv-intro__card {
+      background: linear-gradient(135deg, var(--red-dark) 0%, var(--red) 60%, #c0313d 100%);
+      border-radius: 24px;
+      padding: 32px 40px 28px;
+      color: #fff;
+      width: 100%;
+      box-shadow: 0 12px 40px rgba(150,2,15,.28);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 24px;
+    }
+    .gv-intro__card::before {
+      content: '';
+      position: absolute;
+      top: -40px; right: -40px;
+      width: 180px; height: 180px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.07);
+    }
+    .gv-intro__card::after {
+      content: '';
+      position: absolute;
+      bottom: -30px; left: -30px;
+      width: 140px; height: 140px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.05);
+    }
+    .gv-intro__card-logo {
+      position: relative;
+      z-index: 1;
+      width: 82%;
+      max-width: 340px;
+      height: auto;
+      filter: brightness(0) invert(1);
+    }
+    .gv-intro__card-label {
+      position: relative;
+      z-index: 1;
+      font-size: .75rem;
+      font-weight: 500;
+      opacity: .65;
+      letter-spacing: .04em;
+    }
+    .gv-intro__card-heading { display: none; }
+    .gv-intro__card-desc { display: none; }
+
+    /* DOCUMENTOS */
+    .gv-docs { padding: 80px 0; background: var(--gray-100); }
+    .gv-docs__top { text-align: center; margin-bottom: 52px; }
+    .gv-docs__top h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 2.8vw, 2.1rem);
+      font-weight: 900;
+      color: var(--gray-800);
+      margin-bottom: 12px;
+    }
+    .gv-docs__top h2 span { color: var(--red); }
+    .gv-docs__top p {
+      font-size: .95rem;
+      color: var(--gray-600);
+      max-width: 540px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* Accordion */
+    .gv-accordion { display: flex; flex-direction: column; gap: 12px; }
+    .gv-accordion__item {
+      background: #fff;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+    .gv-accordion__trigger {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 22px 28px;
+      background: var(--red);
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      font-family: var(--font-body);
+      transition: background .2s;
+    }
+    .gv-accordion__trigger:hover { background: var(--red-dark); }
+    .gv-accordion__item.open .gv-accordion__trigger { background: var(--red-dark); }
+    .gv-accordion__trigger-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .gv-accordion__cat-icon {
+      width: 44px; height: 44px;
+      background: rgba(255,255,255,.18);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .gv-accordion__cat-name {
+      font-size: .97rem;
+      font-weight: 800;
+      color: #fff;
+    }
+    .gv-accordion__cat-count {
+      font-size: .78rem;
+      color: rgba(255,255,255,.65);
+      font-weight: 500;
+      margin-top: 2px;
+    }
+    .gv-accordion__chevron {
+      flex-shrink: 0;
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.18);
+      border: none;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff;
+      transition: transform .3s, background .2s;
+      pointer-events: none;
+    }
+    .gv-accordion__item.open .gv-accordion__chevron {
+      transform: rotate(180deg);
+      background: rgba(255,255,255,.28);
+    }
+    .gv-accordion__body {
+      height: 0;
+      overflow: hidden;
+      transition: height .38s ease-in-out;
+    }
+    .gv-accordion__body-inner {
+      padding: 16px 28px 20px;
+      opacity: 0;
+      transition: opacity .3s ease;
+    }
+    .gv-accordion__item.open .gv-accordion__body-inner {
+      opacity: 1;
+    }
+    .gv-accordion__divider {
+      height: 1px;
+      background: var(--gray-200);
+      margin-bottom: 20px;
+    }
+
+    /* Doc card */
+    .gv-doc-card {
+      background: var(--gray-100);
+      border-radius: 12px;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border: 2px solid transparent;
+      transition: border-color .2s, background .2s;
+      margin-bottom: 6px;
+    }
+    .gv-doc-card:last-child { margin-bottom: 0; }
+    .gv-doc-card:hover { border-color: var(--red); background: #fff; }
+    .gv-doc-card__icon {
+      flex-shrink: 0;
+      width: 34px; height: 34px;
+      background: var(--red);
+      border-radius: 9px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .gv-doc-card__info { flex: 1; min-width: 0; display: flex; align-items: center; gap: 10px; }
+    .gv-doc-card__date {
+      flex-shrink: 0;
+      background: var(--red-light);
+      color: var(--red);
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .04em;
+      padding: 2px 8px;
+      border-radius: 20px;
+    }
+    .gv-doc-card__name {
+      font-weight: 600;
+      font-size: .85rem;
+      color: var(--gray-800);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .gv-doc-card__sub { display: none; }
+    .gv-doc-card__actions { display: flex; gap: 6px; flex-shrink: 0; }
+    .gv-btn-icon {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      border: 1.5px solid var(--gray-200);
+      background: #fff;
+      color: var(--gray-600);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      transition: all .2s;
+      text-decoration: none;
+    }
+    .gv-btn-icon:hover { border-color: var(--red); color: var(--red); background: var(--red-light); }
+    .gv-btn-icon--red {
+      background: var(--red);
+      border-color: var(--red);
+      color: #fff;
+    }
+    .gv-btn-icon--red:hover { background: var(--red-dark); border-color: var(--red-dark); }
+
+    /* CTA BAND */
+    .gv-cta {
+      padding: 80px 0;
+      background: linear-gradient(135deg, var(--red-dark) 0%, var(--red) 55%, #c0313d 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .gv-cta::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 320px; height: 320px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.06);
+    }
+    .gv-cta::after {
+      content: '';
+      position: absolute;
+      bottom: -60px; left: 10%;
+      width: 220px; height: 220px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.04);
+    }
+    .gv-cta__inner {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+    }
+    .gv-cta__text h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-weight: 900;
+      color: #fff;
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+    .gv-cta__text p {
+      font-size: .95rem;
+      color: rgba(255,255,255,.8);
+      line-height: 1.65;
+      max-width: 480px;
+    }
+    .gv-cta__contacts {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      flex-shrink: 0;
+    }
+    .gv-cta__contact-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: rgba(255,255,255,.12);
+      border-radius: 14px;
+      padding: 14px 20px;
+      color: #fff;
+      backdrop-filter: blur(6px);
+      transition: background .2s;
+      text-decoration: none;
+      min-width: 280px;
+    }
+    .gv-cta__contact-item:hover { background: rgba(255,255,255,.2); }
+    .gv-cta__contact-item svg { flex-shrink: 0; opacity: .9; }
+    .gv-cta__contact-label { font-size: .72rem; opacity: .7; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
+    .gv-cta__contact-value { font-weight: 700; font-size: .95rem; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .gv-intro__inner { grid-template-columns: 1fr; gap: 48px; }
+      .gv-cta__inner { flex-direction: column; align-items: flex-start; }
+      .gv-cta__contact-item { min-width: 0; width: 100%; }
+    }
+    @media (max-width: 600px) {
+      .gv-intro { padding: 60px 0; }
+      .gv-docs { padding: 60px 0; }
+      .gv-accordion__trigger { padding: 18px 20px; }
+      .gv-accordion__body { padding: 0 16px 16px; }
+      .gv-doc-card { padding: 16px; gap: 12px; }
+      .gv-doc-card__name { white-space: normal; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="container topbar__inner">
+      <a href="index.html" class="topbar__logo">
+        <img src="assets/logotipo/coaph logo branco.png" alt="COAPH" class="topbar__logo-img" />
+      </a>
+      <div class="topbar__search">
+        <input type="text" placeholder="Pesquisar..." />
+        <button aria-label="Buscar">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </button>
+      </div>
+      <div class="topbar__socials">
+        <a href="#" aria-label="Instagram">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+        <a href="#" aria-label="Facebook">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </a>
+        <a href="#" aria-label="TikTok">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="container navbar__inner">
+      <ul class="navbar__menu">
+        <li><a href="index.html">Início</a></li>
+        <li class="has-dropdown">
+          <a href="#">Quem Somos <span class="arrow">▾</span></a>
+          <ul class="dropdown">
+            <li><a href="sobre.html">Sobre</a></li>
+            <li><a href="sedes.html">Nossas Sedes</a></li>
+            <li><a href="cooperativismo.html">Cooperativismo</a></li>
+          </ul>
+        </li>
+        <li class="has-dropdown">
+          <a href="#">Área do Cooperado <span class="arrow">▾</span></a>
+          <ul class="dropdown">
+            <li><a href="pre-cadastro.html">Pré-Cadastro</a></li>
+            <li><a href="https://areadocooperado.coaph.com.br/area_restrita_login.php?_gl=1*1hkwl6b*_ga*NDMzODg0NTgwLjE3ODExOTA2NzQ.*_ga_H7B73YQZ11*czE3ODE2Mzg3MjIkbzE1JGcxJHQxNzgxNjQwNzI2JGo5JGwwJGgw*_ga_W4ES0C9GGL*czE3ODE2Mzg3MjIkbzE1JGcxJHQxNzgxNjQwNzI2JGo5JGwwJGgw" class="js-fade-link">Portal do Cooperado</a></li>
+            <li><a href="termo-adesao.html">Termo de Adesão</a></li>
+          </ul>
+        </li>
+        <li class="active"><a href="governanca.html">Governança Cooperativa</a></li>
+        <li><a href="fala-do-presidente.html">Fala do Presidente</a></li>
+        <li><a href="clube-coaph.html">Clube Coaph+</a></li>
+        <li><a href="nep.html">NEP</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li class="has-dropdown">
+          <a href="#">Fale Conosco <span class="arrow">▾</span></a>
+          <ul class="dropdown">
+            <li><a href="trabalhe-conosco.html">Trabalhe Conosco</a></li>
+            <li><a href="ouvidoria.html">Ouvidoria</a></li>
+            <li><a href="canal-de-etica.html">Canal de Ética</a></li>
+          </ul>
+        </li>
+      </ul>
+      <button class="navbar__burger" id="burger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="page-header">
+    <img src="assets/governança/capa-banner-gover.png" alt="Governança Cooperativa" class="page-header__img" />
+    <div class="page-header__overlay page-header__overlay--dark"></div>
+    <div class="container page-header__inner">
+      <p class="page-header__breadcrumb">
+        <a href="index.html">Início</a>
+        <span>/</span>
+        Governança Cooperativa
+      </p>
+      <h1 class="page-header__title">Governança Cooperativa</h1>
+      <p class="page-header__subtitle">Transparência, ética e boas práticas em todas as nossas atividades.</p>
+    </div>
+  </header>
+
+  <!-- INTRO -->
+  <section class="gv-intro">
+    <div class="container">
+      <div class="gv-intro__inner">
+        <div class="gv-intro__content">
+          <span class="gv-intro__eyebrow">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Documentos Oficiais
+          </span>
+          <h2 class="gv-intro__title">
+            Estatuto, Códigos,<br><span>Regimento e Políticas</span>
+          </h2>
+          <p class="gv-intro__text">
+            Aqui você encontra os principais documentos que orientam a <strong>Governança da COAPH.</strong> O estatuto, os códigos, as políticas e os regimentos são essenciais para garantir transparência, ética e boas práticas em todas as nossas atividades.
+          </p>
+          <p class="gv-intro__text">
+            Esses documentos refletem o compromisso da cooperativa com seus cooperados, parceiros e a sociedade — consulte sempre que precisar.
+          </p>
+        </div>
+        <div class="gv-intro__visual">
+          <div class="gv-intro__card">
+            <img src="assets/governança/logo-govern.png" alt="Diretoria de Governança" class="gv-intro__card-logo" />
+            <p class="gv-intro__card-label">Transparência · Ética · Boas Práticas</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOCUMENTOS -->
+  <section class="gv-docs">
+    <div class="container">
+      <div class="gv-docs__top">
+        <h2>Acesse os <span>documentos</span></h2>
+        <p>Clique em cada categoria para expandir e acessar os documentos disponíveis para visualização ou download.</p>
+      </div>
+
+      <div class="gv-accordion">
+
+        <!-- Estatuto Social -->
+        <div class="gv-accordion__item">
+          <button class="gv-accordion__trigger" aria-expanded="false">
+            <div class="gv-accordion__trigger-left">
+              <div class="gv-accordion__cat-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+              </div>
+              <div>
+                <p class="gv-accordion__cat-name">Estatuto Social</p>
+                <p class="gv-accordion__cat-count">1 documento</p>
+              </div>
+            </div>
+            <div class="gv-accordion__chevron">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+          </button>
+          <div class="gv-accordion__body">
+            <div class="gv-accordion__body-inner">
+              <div class="gv-accordion__divider"></div>
+              <div class="gv-doc-card">
+                <div class="gv-doc-card__icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                </div>
+                <div class="gv-doc-card__info">
+                  <span class="gv-doc-card__date">07/08/2025</span>
+                  <p class="gv-doc-card__name">Estatuto Social da COAPH</p>
+                </div>
+                <div class="gv-doc-card__actions">
+                  <button type="button" class="gv-btn-icon js-pdf-modal"
+                    data-pdf="assets/governança/documentos/estatuto-aprovado-ata-AGE-2025-2.pdf"
+                    data-title="Estatuto Social da COAPH" title="Visualizar">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+                  </button>
+                  <a href="assets/governança/documentos/estatuto-aprovado-ata-AGE-2025-2.pdf" download class="gv-btn-icon gv-btn-icon--red" title="Baixar">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Código de Conduta e Ética -->
+        <div class="gv-accordion__item">
+          <button class="gv-accordion__trigger" aria-expanded="false">
+            <div class="gv-accordion__trigger-left">
+              <div class="gv-accordion__cat-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </div>
+              <div>
+                <p class="gv-accordion__cat-name">Código de Conduta e Ética</p>
+                <p class="gv-accordion__cat-count">1 documento</p>
+              </div>
+            </div>
+            <div class="gv-accordion__chevron">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+          </button>
+          <div class="gv-accordion__body">
+            <div class="gv-accordion__body-inner">
+              <div class="gv-accordion__divider"></div>
+              <div class="gv-doc-card">
+                <div class="gv-doc-card__icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                </div>
+                <div class="gv-doc-card__info">
+                  <span class="gv-doc-card__date">26/02/2025</span>
+                  <p class="gv-doc-card__name">Código de Conduta e Ética Profissional</p>
+                </div>
+                <div class="gv-doc-card__actions">
+                  <button type="button" class="gv-btn-icon js-pdf-modal"
+                    data-pdf="assets/governança/documentos/Codigo-de-Conduta-e-Etica-Profissional-Coaph-2025-2.pdf"
+                    data-title="Código de Conduta e Ética Profissional" title="Visualizar">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+                  </button>
+                  <a href="assets/governança/documentos/Codigo-de-Conduta-e-Etica-Profissional-Coaph-2025-2.pdf" download class="gv-btn-icon gv-btn-icon--red" title="Baixar">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Regimento Interno -->
+        <div class="gv-accordion__item">
+          <button class="gv-accordion__trigger" aria-expanded="false">
+            <div class="gv-accordion__trigger-left">
+              <div class="gv-accordion__cat-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+              </div>
+              <div>
+                <p class="gv-accordion__cat-name">Regimento Interno</p>
+                <p class="gv-accordion__cat-count">1 documento</p>
+              </div>
+            </div>
+            <div class="gv-accordion__chevron">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+          </button>
+          <div class="gv-accordion__body">
+            <div class="gv-accordion__body-inner">
+              <div class="gv-accordion__divider"></div>
+              <div class="gv-doc-card">
+                <div class="gv-doc-card__icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                </div>
+                <div class="gv-doc-card__info">
+                  <span class="gv-doc-card__date">26/02/2025</span>
+                  <p class="gv-doc-card__name">Regimento Interno COAPH</p>
+                </div>
+                <div class="gv-doc-card__actions">
+                  <button type="button" class="gv-btn-icon js-pdf-modal"
+                    data-pdf="assets/governança/documentos/Regimento-Interno-COAPH-1.pdf"
+                    data-title="Regimento Interno COAPH" title="Visualizar">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+                  </button>
+                  <a href="assets/governança/documentos/Regimento-Interno-COAPH-1.pdf" download class="gv-btn-icon gv-btn-icon--red" title="Baixar">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Políticas -->
+        <div class="gv-accordion__item">
+          <button class="gv-accordion__trigger" aria-expanded="false">
+            <div class="gv-accordion__trigger-left">
+              <div class="gv-accordion__cat-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+              </div>
+              <div>
+                <p class="gv-accordion__cat-name">Políticas</p>
+                <p class="gv-accordion__cat-count">7 documentos</p>
+              </div>
+            </div>
+            <div class="gv-accordion__chevron">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+          </button>
+          <div class="gv-accordion__body">
+            <div class="gv-accordion__body-inner">
+              <div class="gv-accordion__divider"></div>
+
+              <div class="gv-doc-card">
+                <div class="gv-doc-card__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+                <div class="gv-doc-card__info">
+                  <span class="gv-doc-card__date">26/02/2025</span>
+                  <p class="gv-doc-card__name">Regulamentação do FATES</p>
+                </div>
+                <div class="gv-doc-card__actions">
+                  <button type="button" class="gv-btn-icon js-pdf-modal" data-pdf="assets/governança/documentos/Politica-de-Regulamentacao-do-FATES-Fundo-de-Assistencia-Tenica-Educacional-e-Social-Coaph-2025.pdf" data-title="Regulamentação do FATES" title="Visualizar"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></button>
+                  <a href="assets/governança/documentos/Politica-de-Regulamentacao-do-FATES-Fundo-de-Assistencia-Tenica-Educacional-e-Social-Coaph-2025.pdf" download class="gv-btn-icon gv-btn-icon--red" title="Baixar"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
+                </div>
+              </div>
+
+              <div class="gv-doc-card">
+                <div class="gv-doc-card__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+                <div class="gv-doc-card__info">
+                  <span class="gv-doc-card__date">26/02/2025</span>
+                  <p class="gv-doc-card__name">Substituição do Cooperado</p>
+                </div>
+                <div class="gv-doc-card__actions">
+                  <button type="button" class="gv-btn-icon js-pdf-modal" data-pdf="assets/governança/documentos/Politica-de-Substituicao-do-Cooperado-COAPH-.pdf" data-title="Substituição do Cooperado" title="Visualizar"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></button>
+                  <a href="assets/governança/documentos/Politica-de-Substituicao-do-Cooperado-COAPH-.pdf" download class="gv-btn-icon gv-btn-icon--red" title="Baixar"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
+                </div>
+              </div>
+
+              <div class="gv-doc-card">
+                <div class="gv-doc-card__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+                <div class="gv-doc-card__info">
+                  <span class="gv-doc-card__date">26/02/2025</span>
+                  <p class="gv-doc-card__name">Sustentabilidade</p>
+                </div>
+                <div class="gv-doc-card__actions">
+                  <button type="button" class="gv-btn-icon js-pdf-modal" data-pdf="assets/governança/documentos/Politica-de-Sustentabilidade-COAPH-.pdf" data-title="Sustentabilidade" title="Visualizar"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></button>
+                  <a href="assets/governança/documentos/Politica-de-Sustentabilidade-COAPH-.pdf" download class="gv-btn-icon gv-btn-icon--red" title="Baixar"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
+                </div>
+              </div>
+
+              <div class="gv-doc-card">
+                <div class="gv-doc-card__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+                <div class="gv-doc-card__info">
+                  <span class="gv-doc-card__date">26/02/2025</span>
+                  <p class="gv-doc-card__name">Segurança da Informação</p>
+                </div>
+                <div class="gv-doc-card__actions">
+                  <button type="button" class="gv-btn-icon js-pdf-modal" data-pdf="assets/governança/documentos/Politica-de-Seguranca-da-Informacao-COAPH.pdf" data-title="Segurança da Informação" title="Visualizar"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></button>
+                  <a href="assets/governança/documentos/Politica-de-Seguranca-da-Informacao-COAPH.pdf" download class="gv-btn-icon gv-btn-icon--red" title="Baixar"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
+                </div>
+              </div>
+
+              <div class="gv-doc-card">
+                <div class="gv-doc-card__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+                <div class="gv-doc-card__info">
+                  <span class="gv-doc-card__date">26/02/2025</span>
+                  <p class="gv-doc-card__name">Compras e Contratações</p>
+                </div>
+                <div class="gv-doc-card__actions">
+                  <button type="button" class="gv-btn-icon js-pdf-modal" data-pdf="assets/governança/documentos/Politica-de-Compras-e-Contratacoes-Coaph-24.04.2025-.pdf.pdf" data-title="Compras e Contratações" title="Visualizar"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></button>
+                  <a href="assets/governança/documentos/Politica-de-Compras-e-Contratacoes-Coaph-24.04.2025-.pdf.pdf" download class="gv-btn-icon gv-btn-icon--red" title="Baixar"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
+                </div>
+              </div>
+
+              <div class="gv-doc-card">
+                <div class="gv-doc-card__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+                <div class="gv-doc-card__info">
+                  <span class="gv-doc-card__date">26/02/2025</span>
+                  <p class="gv-doc-card__name">Gestão de Riscos</p>
+                </div>
+                <div class="gv-doc-card__actions">
+                  <button type="button" class="gv-btn-icon js-pdf-modal" data-pdf="assets/governança/documentos/Politica-de-Gestao-de-Riscos-COAPH.pdf" data-title="Gestão de Riscos" title="Visualizar"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></button>
+                  <a href="assets/governança/documentos/Politica-de-Gestao-de-Riscos-COAPH.pdf" download class="gv-btn-icon gv-btn-icon--red" title="Baixar"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
+                </div>
+              </div>
+
+              <div class="gv-doc-card">
+                <div class="gv-doc-card__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+                <div class="gv-doc-card__info">
+                  <span class="gv-doc-card__date">05/08/2025</span>
+                  <p class="gv-doc-card__name">Gerenciamento de Crises</p>
+                </div>
+                <div class="gv-doc-card__actions">
+                  <button type="button" class="gv-btn-icon js-pdf-modal" data-pdf="assets/governança/documentos/Politica-de-Gerenciamento-de-Crises-COAPH.pdf" data-title="Gerenciamento de Crises" title="Visualizar"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></button>
+                  <a href="assets/governança/documentos/Politica-de-Gerenciamento-de-Crises-COAPH.pdf" download class="gv-btn-icon gv-btn-icon--red" title="Baixar"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <section class="gv-cta">
+    <div class="container">
+      <div class="gv-cta__inner">
+        <div class="gv-cta__text">
+          <h2>Dúvidas sobre<br>a Governança?</h2>
+          <p>Nossa equipe está disponível para esclarecer qualquer questão sobre os documentos e as práticas de governança da COAPH.</p>
+        </div>
+        <div class="gv-cta__contacts">
+          <a href="tel:08530393030" class="gv-cta__contact-item">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 11 19.79 19.79 0 0 1 1.63 2.38 2 2 0 0 1 3.6.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 7.91a16 16 0 0 0 6.16 6.16l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <div>
+              <p class="gv-cta__contact-label">Telefone</p>
+              <p class="gv-cta__contact-value">(85) 3039-3030</p>
+            </div>
+          </a>
+          <a href="mailto:faleconosco@coaph.com.br" class="gv-cta__contact-item">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <div>
+              <p class="gv-cta__contact-label">E-mail</p>
+              <p class="gv-cta__contact-value">faleconosco@coaph.com.br</p>
+            </div>
+          </a>
+          <a href="https://wa.me/558530393030" target="_blank" rel="noopener" class="gv-cta__contact-item">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+            <div>
+              <p class="gv-cta__contact-label">WhatsApp</p>
+              <p class="gv-cta__contact-value">(85) 3039-3030</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div class="footer__col">
+        <h4>Institucional</h4>
+        <ul>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="pre-cadastro.html">Pré-Cadastro</a></li>
+          <li><a href="trabalhe-conosco.html">Trabalhe Conosco</a></li>
+        </ul>
+        <div class="footer__logo-mark">
+          <img src="assets/logotipo/coaph logo branco.png" alt="COAPH" class="footer__logo-img" />
+        </div>
+      </div>
+      <div class="footer__col">
+        <h4>Entre em contato</h4>
+        <p>Telefone: <a href="tel:08530393030">(85) 3039-3030</a></p>
+        <p>E-mail: <a href="mailto:faleconosco@coaph.com.br">faleconosco@coaph.com.br</a></p>
+        <p class="footer__address">MATRIZ – Rua Joaquim Sá, 538 – Joaquim Távora – Fortaleza – CE, 60135-218 CNPJ: 11.769.319/0001-88</p>
+      </div>
+      <div class="footer__col footer__newsletter">
+        <h4>Assine nossa Newsletter</h4>
+        <div class="newsletter__form">
+          <input type="text" placeholder="Nome" />
+          <input type="email" placeholder="E-mail" />
+          <label class="newsletter__check">
+            <input type="checkbox" />
+            <span>Aceito receber e-mails promocionais da Coaph</span>
+          </label>
+          <button class="btn btn--red btn--full">Assinar newsletter</button>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>Coaph 2026 © Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Float -->
+  <a href="https://wa.me/558530393030" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+  </a>
+
+  <!-- PDF MODAL -->
+  <div class="pdf-modal" id="pdfModal" aria-hidden="true">
+    <div class="pdf-modal__overlay" id="pdfModalOverlay"></div>
+    <div class="pdf-modal__box">
+      <div class="pdf-modal__header">
+        <p id="pdfModalTitle"></p>
+        <button class="pdf-modal__close" id="pdfModalClose" aria-label="Fechar">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <iframe id="pdfModalFrame" src="" title="Documento PDF"></iframe>
+    </div>
+  </div>
+
+  <script src="main.js?v=10"></script>
+</body>
+</html>

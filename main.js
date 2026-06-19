@@ -5,8 +5,20 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  /* ── NAVBAR STICKY SHADOW ──────────────────────────── */
+  /* ── NAVBAR HIDE ON SCROLL ────────────────────────── */
   const navbar = document.getElementById('navbar');
+  let lastScrollY = 0;
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    if (y <= 10) {
+      navbar.classList.remove('navbar--hidden');
+    } else if (y > lastScrollY + 6) {
+      navbar.classList.add('navbar--hidden');
+    } else if (y < lastScrollY - 6) {
+      navbar.classList.remove('navbar--hidden');
+    }
+    lastScrollY = y;
+  }, { passive: true });
 
   /* ── BURGER MENU ───────────────────────────────────── */
   const burger = document.getElementById('burger');
@@ -111,51 +123,68 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Drag / swipe
     const track = document.getElementById('topBanner');
-    let dragStartX = null;
-    let isDragging = false;
+    let dragStartX  = null;
+    let dragStartY  = null;
+    let isDragging  = false;
 
-    const inContent = el => !!el.closest('.top-banner__content');
+    function finalizeDrag(clientX) {
+      if (!isDragging) return;
+      const delta = clientX - dragStartX;
+      if (Math.abs(delta) > 50) { delta < 0 ? goTo(current + 1, 1) : goTo(current - 1, -1); resetAuto(); }
+    }
+
+    const isText = el => !!el.closest('p, h1, h2, h3, h4, h5, h6, span, a, button');
 
     track.addEventListener('mousedown', e => {
-      if (inContent(e.target)) return;
-      e.preventDefault();
+      if (e.button !== 0 || isText(e.target)) return;
       dragStartX = e.clientX;
+      dragStartY = e.clientY;
       isDragging = false;
-      track.style.cursor = 'grabbing';
     });
+
     track.addEventListener('mousemove', e => {
       if (dragStartX === null) return;
-      if (Math.abs(e.clientX - dragStartX) > 5) isDragging = true;
+      const dx = Math.abs(e.clientX - dragStartX);
+      const dy = Math.abs(e.clientY - dragStartY);
+      if (!isDragging && dx > 6 && dx > dy) {
+        isDragging = true;
+        track.style.cursor = 'grabbing';
+      }
     });
+
     track.addEventListener('mouseup', e => {
-      track.style.cursor = '';
-      if (dragStartX === null) return;
-      const delta = e.clientX - dragStartX;
-      if (Math.abs(delta) > 50) { delta < 0 ? goTo(current + 1, 1) : goTo(current - 1, -1); resetAuto(); }
+      finalizeDrag(e.clientX);
       dragStartX = null;
+      isDragging = false;
+      track.style.cursor = '';
     });
+
     track.addEventListener('mouseleave', e => {
-      track.style.cursor = '';
-      if (dragStartX === null) return;
-      const delta = e.clientX - dragStartX;
-      if (Math.abs(delta) > 50) { delta < 0 ? goTo(current + 1, 1) : goTo(current - 1, -1); resetAuto(); }
+      finalizeDrag(e.clientX);
       dragStartX = null;
+      isDragging = false;
+      track.style.cursor = '';
     });
+
+    track.addEventListener('click', e => { if (isDragging) e.preventDefault(); }, true);
+
+    // Touch
     track.addEventListener('touchstart', e => {
-      if (inContent(e.target)) return;
-      dragStartX = e.touches[0].clientX; isDragging = false;
+      dragStartX = e.touches[0].clientX;
+      dragStartY = e.touches[0].clientY;
+      isDragging = false;
     }, { passive: true });
-    track.addEventListener('touchmove',  e => {
+    track.addEventListener('touchmove', e => {
       if (dragStartX === null) return;
-      if (Math.abs(e.touches[0].clientX - dragStartX) > 5) isDragging = true;
+      if (Math.abs(e.touches[0].clientX - dragStartX) > 6) isDragging = true;
     }, { passive: true });
     track.addEventListener('touchend', e => {
       if (dragStartX === null) return;
       const delta = e.changedTouches[0].clientX - dragStartX;
       if (Math.abs(delta) > 50) { delta < 0 ? goTo(current + 1, 1) : goTo(current - 1, -1); resetAuto(); }
       dragStartX = null;
+      isDragging = false;
     });
-    track.addEventListener('click', e => { if (isDragging) e.preventDefault(); }, true);
 
     startAuto();
   }());
@@ -264,6 +293,57 @@ document.addEventListener('DOMContentLoaded', () => {
     { sel: '.numeros__card',                     cls: '',               stagger: true  },
     { sel: '.valores__item',                     cls: '',               stagger: true  },
     { sel: '.footer__col',                       cls: '',               stagger: true  },
+
+    // Páginas internas (ex.: Sobre)
+    { sel: '.proposito__headline',                cls: '',               stagger: false },
+    { sel: '.proposito__card',                    cls: '',               stagger: true  },
+    { sel: '.servicos-band__top',                 cls: '',               stagger: false },
+    { sel: '.servicos-band__item',                cls: '',               stagger: true  },
+    { sel: '.team__header',                       cls: '',               stagger: false },
+    { sel: '.team__member',                       cls: '',               stagger: true  },
+    { sel: '.estrutura__content',                 cls: 'reveal--left',   stagger: false },
+    { sel: '.estrutura__video',                   cls: 'reveal--right',  stagger: false },
+    { sel: '.sedes__header',                      cls: '',               stagger: false },
+    { sel: '.sede-card',                          cls: '',               stagger: true  },
+    { sel: '.coop-info__img',                     cls: 'reveal--left',   stagger: false },
+    { sel: '.coop-info__content',                 cls: 'reveal--right',  stagger: false },
+    { sel: '.principios__top',                    cls: '',               stagger: false },
+    { sel: '.principio-item',                     cls: '',               stagger: true  },
+    { sel: '.ramos__title',                       cls: '',               stagger: false },
+    { sel: '.ramo-item',                          cls: '',               stagger: true  },
+
+    // Pré-Cadastro
+    { sel: '.beneficios__top',                    cls: '',               stagger: false },
+    { sel: '.beneficio-item',                     cls: '',               stagger: true  },
+    { sel: '.estrutura-band__top',                cls: '',               stagger: false },
+    { sel: '.apoio__top',                         cls: '',               stagger: false },
+    { sel: '.apoio-item',                         cls: '',               stagger: true  },
+    { sel: '.profissionais-band__content',        cls: 'reveal--left',   stagger: false },
+    { sel: '.profissionais-band__item',           cls: '',               stagger: true  },
+    { sel: '.direitos__content',                  cls: 'reveal--right',  stagger: false },
+    { sel: '.cadastro__top',                      cls: '',               stagger: false },
+    { sel: '.cadastro__docs',                     cls: 'reveal--left',   stagger: false },
+    { sel: '.cadastro__cta',                      cls: 'reveal--right',  stagger: false },
+
+    // Termo de Adesão
+    { sel: '.ta-intro__content',                  cls: 'reveal--left',   stagger: false },
+    { sel: '.ta-intro__visual',                   cls: 'reveal--right',  stagger: false },
+    { sel: '.ta-destaques__top',                  cls: '',               stagger: false },
+    { sel: '.ta-destaque-card',                   cls: '',               stagger: true  },
+    { sel: '.ta-processo__text',                  cls: 'reveal--left',   stagger: false },
+    { sel: '.ta-processo__visual',                cls: 'reveal--right',  stagger: false },
+    { sel: '.ta-cta__text',                       cls: 'reveal--left',   stagger: false },
+    { sel: '.ta-cta__contacts',                   cls: 'reveal--right',  stagger: false },
+
+    // Governança
+    { sel: '.gv-intro__content',                  cls: 'reveal--left',   stagger: false },
+    { sel: '.gv-intro__visual',                   cls: 'reveal--right',  stagger: false },
+    { sel: '.gv-docs__top',                       cls: '',               stagger: false },
+    { sel: '.gv-accordion__item',                 cls: '',               stagger: true  },
+    { sel: '.gv-cta__text',                       cls: 'reveal--left',   stagger: false },
+    { sel: '.gv-cta__contacts',                   cls: 'reveal--right',  stagger: false },
+    // Fala do Presidente
+    { sel: '.fp-carta__inner',                    cls: '',               stagger: false },
   ];
 
   revealMap.forEach(({ sel, cls }) => {
@@ -290,7 +370,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }, { threshold: 0.12 });
 
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  // Espera o navegador pintar o estado oculto inicial antes de observar —
+  // sem isso, elementos já visíveis no primeiro frame (ex.: topo de páginas
+  // internas) ficam "visible" antes da transição rodar e aparecem secos.
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      setTimeout(() => {
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+      }, 60);
+    });
+  });
 
   /* ── SMOOTH ACTIVE NAV ─────────────────────────────── */
   const sections = document.querySelectorAll('section[id]');
@@ -406,5 +495,212 @@ document.addEventListener('DOMContentLoaded', () => {
       if (e.key === 'ArrowRight') goTo(current + 1);
     });
   }());
+
+  /* ── FADE TO LINK (Portal do Cooperado) ────────────── */
+  document.querySelectorAll('.js-fade-link').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const overlay = document.createElement('div');
+      overlay.className = 'page-fade-overlay';
+      document.body.appendChild(overlay);
+      requestAnimationFrame(() => overlay.classList.add('active'));
+      overlay.addEventListener('transitionend', () => {
+        window.location.href = link.href;
+      }, { once: true });
+    });
+  });
+
+  /* ── NOSSA ESTRUTURA — CARROSSEL INFINITO (Pré-Cadastro) ── */
+  (function () {
+    const carousel = document.getElementById('estruturaCarousel');
+    if (!carousel) return;
+
+    const track   = carousel.querySelector('.estrutura-carousel__track');
+    const dotsBox = document.getElementById('estruturaDots');
+    const prevBtn = carousel.querySelector('.estrutura-carousel__arrow--prev');
+    const nextBtn = carousel.querySelector('.estrutura-carousel__arrow--next');
+
+    // ── Clona slides: [cópia esq.] [originais] [cópia dir.]
+    const orig = [...track.children];
+    const N    = orig.length;
+    track.innerHTML = '';
+    const mkClone = s => { const c = s.cloneNode(true); c.setAttribute('aria-hidden', 'true'); return c; };
+    orig.forEach(s => track.appendChild(mkClone(s)));
+    orig.forEach(s => track.appendChild(s));
+    orig.forEach(s => track.appendChild(mkClone(s)));
+    const all = [...track.children]; // 3 × N
+
+    // ── 3 dots fixos ciclando com current % 3
+    const DOT_N = 3;
+    for (let i = 0; i < DOT_N; i++) {
+      const d = document.createElement('button');
+      d.setAttribute('aria-label', `Grupo ${i + 1}`);
+      d.addEventListener('click', () => { if (!moving) goToReal(i); });
+      dotsBox.appendChild(d);
+    }
+    const dots = [...dotsBox.children];
+
+    let current      = 0;
+    let moving       = false;
+    let programmatic = false; // bloqueia loopCheck durante animações programáticas
+
+    function syncDots() {
+      const active = current % DOT_N;
+      dots.forEach((d, i) => d.classList.toggle('active', i === active));
+    }
+
+    function leftOf(idx) {
+      const tr = track.getBoundingClientRect();
+      const sl = all[idx].getBoundingClientRect();
+      return track.scrollLeft + (sl.left - tr.left);
+    }
+
+    function jumpTo(idx) {
+      programmatic = true;
+      track.style.scrollSnapType = 'none';
+      track.scrollLeft = leftOf(idx);
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        track.style.scrollSnapType = '';
+        setTimeout(() => { programmatic = false; }, 80);
+      }));
+    }
+
+    function smoothTo(idx) {
+      programmatic = true;
+      track.scrollTo({ left: leftOf(idx), behavior: 'smooth' });
+    }
+
+    function loopCheck() {
+      const tr = track.getBoundingClientRect();
+      let closest = 0, best = Infinity;
+      all.forEach((s, i) => {
+        const d = Math.abs(s.getBoundingClientRect().left - tr.left);
+        if (d < best) { best = d; closest = i; }
+      });
+      if (closest < N || closest >= 2 * N) {
+        current = closest % N;
+        jumpTo(N + current); // reset silencioso para zona real
+      } else {
+        current = closest - N;
+        programmatic = false;
+      }
+      syncDots();
+      moving = false;
+    }
+
+    // Só roda loopCheck ao arrastar/touch (não durante scroll programático)
+    track.addEventListener('scroll', () => {
+      if (programmatic) return;
+      clearTimeout(track._lt);
+      track._lt = setTimeout(loopCheck, 150);
+    }, { passive: true });
+
+    function goToReal(i) {
+      moving = true;
+      current = i;
+      smoothTo(N + i);
+      syncDots();
+      setTimeout(() => { loopCheck(); }, 520);
+    }
+
+    prevBtn.addEventListener('click', () => {
+      if (moving) return;
+      moving = true;
+      smoothTo(N + current - 1);
+      current = (current - 1 + N) % N;
+      syncDots();
+      setTimeout(() => { loopCheck(); }, 520);
+    });
+
+    nextBtn.addEventListener('click', () => {
+      if (moving) return;
+      moving = true;
+      smoothTo(N + current + 1);
+      current = (current + 1) % N;
+      syncDots();
+      setTimeout(() => { loopCheck(); }, 520);
+    });
+
+    // Inicializa no slide real 0
+    jumpTo(N);
+    syncDots();
+  }());
+
+  /* ── PDF MODAL (Termo de Adesão) ───────────────────── */
+  (function () {
+    const modal  = document.getElementById('pdfModal');
+    if (!modal) return;
+
+    const frame  = document.getElementById('pdfModalFrame');
+    const title  = document.getElementById('pdfModalTitle');
+
+    function open(src, label) {
+      frame.src = src;
+      title.textContent = label || '';
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+    function close() {
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      frame.src = '';
+    }
+
+    document.querySelectorAll('.js-pdf-modal').forEach(btn => {
+      btn.addEventListener('click', () => open(btn.dataset.pdf, btn.dataset.title));
+    });
+    document.getElementById('pdfModalOverlay').addEventListener('click', close);
+    document.getElementById('pdfModalClose').addEventListener('click', close);
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && modal.classList.contains('open')) close();
+    });
+  }());
+
+  /* ── Governança Accordion ── */
+  function closeAccordion(item) {
+    const body = item.querySelector('.gv-accordion__body');
+    body.style.height = body.scrollHeight + 'px';
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => { body.style.height = '0'; });
+    });
+    item.classList.remove('open');
+    item.querySelector('.gv-accordion__trigger').setAttribute('aria-expanded', 'false');
+  }
+
+  function openAccordion(item, instant) {
+    item.classList.add('open');
+    item.querySelector('.gv-accordion__trigger').setAttribute('aria-expanded', 'true');
+    const body = item.querySelector('.gv-accordion__body');
+    if (instant) {
+      body.style.transition = 'none';
+      body.style.height = 'auto';
+      requestAnimationFrame(() => { body.style.transition = ''; });
+      return;
+    }
+    body.style.height = body.scrollHeight + 'px';
+    const onEnd = (e) => {
+      if (e.propertyName === 'height') {
+        if (item.classList.contains('open')) body.style.height = 'auto';
+        body.removeEventListener('transitionend', onEnd);
+      }
+    };
+    body.addEventListener('transitionend', onEnd);
+  }
+
+  /* Abre todos ao carregar sem animação */
+  document.querySelectorAll('.gv-accordion__item').forEach(item => openAccordion(item, true));
+
+  document.querySelectorAll('.gv-accordion__trigger').forEach(trigger => {
+    trigger.addEventListener('click', () => {
+      const item = trigger.closest('.gv-accordion__item');
+      if (item.classList.contains('open')) {
+        closeAccordion(item);
+      } else {
+        openAccordion(item, false);
+      }
+    });
+  });
 
 });

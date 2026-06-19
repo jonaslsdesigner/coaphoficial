@@ -1,0 +1,563 @@
+/* =============================================
+   NEP — Núcleo de Educação Permanente
+   ============================================= */
+
+/* ---------- BANNER ---------- */
+.nep-banner {
+  width: 100%;
+  height: 460px;
+  overflow: hidden;
+  line-height: 0;
+}
+.nep-banner__img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+}
+@media (max-width: 900px) { .nep-banner { height: 320px; } }
+@media (max-width: 600px) { .nep-banner { height: 220px; } }
+
+/* ---------- TAG LABEL ---------- */
+.nep-tag {
+  display: inline-block;
+  font-size: .72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  color: var(--red);
+  background: rgba(150,2,15,.08);
+  border: 1.5px solid rgba(150,2,15,.18);
+  border-radius: 50px;
+  padding: 5px 14px;
+  margin-bottom: 16px;
+}
+.nep-tag--dark {
+  color: #fff;
+  background: rgba(255,255,255,.15);
+  border-color: rgba(255,255,255,.3);
+}
+.nep-tag--white {
+  color: var(--red);
+  background: #fff;
+  border-color: rgba(150,2,15,.2);
+}
+
+/* ---------- TÍTULOS DE SEÇÃO ---------- */
+.nep-section-title {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 900;
+  color: #1a1a1a;
+  margin-bottom: 48px;
+}
+
+/* ---------- QUEM SOMOS ---------- */
+.nep-sobre {
+  background: #fff;
+  padding: 80px 0 72px;
+}
+
+.nep-sobre__inner {
+  display: flex;
+  gap: 72px;
+  align-items: center;
+}
+
+.nep-sobre__content {
+  flex: 1;
+}
+
+.nep-sobre__heading {
+  font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+  font-weight: 900;
+  color: #1a1a1a;
+  line-height: 1.15;
+  margin: 0 0 20px;
+}
+.nep-sobre__heading strong { color: var(--red); }
+
+.nep-sobre__text {
+  font-size: .97rem;
+  color: #555;
+  line-height: 1.85;
+  margin-bottom: 14px;
+}
+
+.nep-sobre__stats {
+  display: flex;
+  gap: 32px;
+  margin-top: 32px;
+  padding-top: 28px;
+  border-top: 1.5px solid #f0f0f0;
+}
+.nep-sobre__stat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.nep-sobre__stat strong {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--red);
+  line-height: 1;
+}
+.nep-sobre__stat span {
+  font-size: .78rem;
+  font-weight: 600;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+
+.nep-sobre__img-wrap {
+  flex: 0 0 440px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 40px rgba(0,0,0,.12);
+  position: relative;
+}
+.nep-sobre__img-wrap::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border: 3px solid var(--red-light);
+  border-radius: 20px;
+  z-index: -1;
+}
+
+.nep-sobre__img-wrap img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ---------- NOSSA EQUIPE ---------- */
+.nep-equipe-section {
+  background: #f7f7f7;
+  padding: 72px 0 80px;
+}
+
+.nep-equipe-section__header {
+  text-align: center;
+  margin-bottom: 52px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.nep-equipe-section__header .nep-tag {
+  color: var(--red);
+  background: rgba(150,2,15,.08);
+  border-color: rgba(150,2,15,.18);
+}
+
+.nep-equipe-section__title {
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  font-weight: 900;
+  color: #1a1a1a;
+  margin: 0;
+}
+.nep-equipe-section__title strong { color: var(--red); }
+
+.nep-equipe-section__grid {
+  display: flex;
+  justify-content: center;
+  gap: 72px;
+}
+
+.nep-equipe-section__member {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  cursor: pointer;
+}
+
+.nep-equipe-section__photo {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 5px solid var(--red-light);
+  background: #f0f0f0;
+  flex-shrink: 0;
+  box-shadow: 0 4px 24px rgba(150,2,15,.15);
+  transition: transform .3s, box-shadow .3s;
+}
+
+.nep-equipe-section__member:hover .nep-equipe-section__photo {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 36px rgba(150,2,15,.2);
+}
+
+.nep-equipe-section__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.nep-equipe-section__name {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #1a1a1a;
+  text-align: center;
+  margin: 0;
+}
+
+.nep-equipe-section__role {
+  font-size: .85rem;
+  color: var(--red);
+  font-weight: 600;
+  text-align: center;
+  margin: 0;
+  background: rgba(150,2,15,.07);
+  border-radius: 20px;
+  padding: 4px 14px;
+}
+
+/* ---------- VALORES ---------- */
+.nep-valores {
+  background: linear-gradient(135deg, var(--red) 0%, #7a0109 100%);
+  padding: 72px 0;
+}
+
+.nep-valores__header {
+  text-align: center;
+  margin-bottom: 52px;
+}
+
+.nep-valores__title {
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  font-weight: 900;
+  color: #fff;
+  margin: 0 0 10px;
+}
+.nep-valores__title strong { color: rgba(255,255,255,.75); }
+
+.nep-valores__sub {
+  font-size: 1rem;
+  color: rgba(255,255,255,.7);
+  margin: 0;
+}
+
+.nep-valores__grid {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+}
+
+.nep-valores__item {
+  flex: 1;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  color: #fff;
+  gap: 14px;
+  background: rgba(255,255,255,.1);
+  border: 1.5px solid rgba(255,255,255,.18);
+  border-radius: 16px;
+  padding: 32px 28px;
+  transition: background .2s, transform .2s;
+}
+.nep-valores__item:hover {
+  background: rgba(255,255,255,.16);
+  transform: translateY(-4px);
+}
+
+.nep-valores__icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 14px;
+  background: rgba(255,255,255,.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.nep-valores__item strong {
+  font-size: 1.05rem;
+  font-weight: 800;
+  display: block;
+}
+
+.nep-valores__item p {
+  font-size: .9rem;
+  color: rgba(255,255,255,.82);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ---------- PROGRAMAS (ACORDEÃO) ---------- */
+.nep-programas {
+  background: #f4f4f4;
+  padding: 80px 0;
+}
+
+.nep-programas .nep-tag {
+  display: block;
+  width: fit-content;
+  margin-bottom: 12px;
+}
+
+.nep-programas .nep-section-title {
+  color: #1a1a1a;
+  text-align: left;
+  margin-bottom: 40px;
+}
+
+.gv-accordion { display: flex; flex-direction: column; gap: 12px; }
+
+.gv-accordion__item {
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0,0,0,.06);
+  border: 1.5px solid #ebebeb;
+  transition: box-shadow .2s;
+}
+.gv-accordion__item:hover {
+  box-shadow: 0 4px 24px rgba(0,0,0,.1);
+}
+
+.gv-accordion__trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 22px 28px;
+  background: #96020F;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  transition: background .2s;
+}
+
+.gv-accordion__trigger:hover,
+.gv-accordion__item.open .gv-accordion__trigger { background: #7a0109; }
+
+.gv-accordion__trigger-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.gv-accordion__cat-icon {
+  width: 44px; height: 44px;
+  background: rgba(255,255,255,.18);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.gv-accordion__cat-name {
+  font-size: .97rem;
+  font-weight: 800;
+  color: #fff;
+  margin: 0;
+}
+
+.gv-accordion__chevron {
+  flex-shrink: 0;
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.18);
+  border: none;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff;
+  transition: transform .3s, background .2s;
+  pointer-events: none;
+}
+
+.gv-accordion__item.open .gv-accordion__chevron {
+  transform: rotate(180deg);
+  background: rgba(255,255,255,.28);
+}
+
+.gv-accordion__body {
+  height: 0;
+  overflow: hidden;
+  transition: height .38s ease-in-out;
+}
+
+.gv-accordion__body-inner {
+  padding: 28px 28px 32px;
+  opacity: 0;
+  transition: opacity .3s ease;
+}
+
+.gv-accordion__item.open .gv-accordion__body-inner { opacity: 1; }
+
+.gv-accordion__divider {
+  height: 1px;
+  background: #ebebeb;
+  margin-bottom: 28px;
+}
+
+.nep-accordion__content {
+  display: flex;
+  gap: 56px;
+  align-items: flex-start;
+}
+
+.nep-accordion__content-img {
+  flex: 0 0 400px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,.1);
+}
+
+.nep-accordion__content-img img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.nep-accordion__content-text {
+  flex: 1;
+  padding-top: 8px;
+}
+
+.nep-accordion__content-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--red);
+  margin-bottom: 20px;
+}
+
+.nep-accordion__content-text p {
+  font-size: .95rem;
+  color: #555;
+  line-height: 1.85;
+  margin-bottom: 10px;
+}
+
+.nep-accordion__content-text strong {
+  color: #333;
+  font-weight: 700;
+}
+
+/* ---------- ENTRE EM CONTATO ---------- */
+.nep-contato {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2e2e2e 100%);
+  padding: 80px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.nep-contato__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  position: relative;
+  z-index: 2;
+}
+
+.nep-contato__text {
+  flex: 1;
+  max-width: 580px;
+}
+
+.nep-contato__title {
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  font-weight: 900;
+  color: #fff;
+  margin: 0 0 14px;
+  line-height: 1.2;
+}
+
+.nep-contato__sub {
+  font-size: .97rem;
+  color: rgba(255,255,255,.7);
+  margin: 0 0 32px;
+  line-height: 1.7;
+}
+
+.nep-contato__btn {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 36px !important;
+  border-radius: 50px !important;
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+  text-decoration: none;
+  background: #fff !important;
+  color: #1a1a1a !important;
+  transition: background .2s, transform .2s, box-shadow .2s;
+}
+.nep-contato__btn:hover {
+  background: #f2f2f2 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(0,0,0,.25);
+}
+
+.nep-contato__icon-wrap {
+  flex-shrink: 0;
+  opacity: .5;
+}
+
+/* ---------- RESPONSIVO ---------- */
+@media (max-width: 1000px) {
+  .nep-accordion__content-img {
+    flex: 0 0 320px;
+  }
+}
+
+@media (max-width: 900px) {
+  .nep-sobre__inner {
+    flex-direction: column-reverse;
+    gap: 40px;
+  }
+  .nep-sobre__img-wrap {
+    flex: none;
+    width: 100%;
+  }
+  .nep-sobre__stats {
+    gap: 20px;
+  }
+  .nep-equipe-section__grid {
+    gap: 40px;
+  }
+  .nep-valores__grid {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .nep-valores__item {
+    max-width: 100%;
+  }
+  .nep-accordion__content {
+    flex-direction: column;
+    gap: 32px;
+  }
+  .nep-accordion__content-img {
+    flex: none;
+    width: 100%;
+  }
+  .nep-contato__icon-wrap {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .nep-equipe-section__grid {
+    flex-direction: column;
+    align-items: center;
+  }
+  .nep-sobre__stats {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .nep-contato__inner {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trabalhe Conosco – COAPH</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css?v=10" />
+  <style>
+    /* ── FORM SECTION ── */
+    .form-section {
+      padding: 80px 0 96px;
+      background: var(--gray-100);
+    }
+    .form-section__inner {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .form-section__header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .form-section__label {
+      font-size: .78rem;
+      font-weight: 700;
+      color: var(--red);
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      margin-bottom: 10px;
+    }
+    .form-section__title {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 900;
+      color: var(--gray-800);
+      margin-bottom: 8px;
+    }
+    .form-section__sub {
+      font-size: .97rem;
+      color: var(--gray-600);
+    }
+    .form-card {
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 4px 40px rgba(0,0,0,.07);
+      padding: 56px 64px;
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .form-group--full { grid-column: 1 / -1; }
+    .form-label {
+      font-size: .78rem;
+      font-weight: 700;
+      color: var(--gray-800);
+      text-transform: uppercase;
+      letter-spacing: .07em;
+    }
+    .form-label .req { color: var(--red); margin-left: 2px; }
+    .form-input,
+    .form-select,
+    .form-textarea {
+      border: 1.5px solid var(--gray-200);
+      border-radius: 10px;
+      padding: 13px 16px;
+      font-family: inherit;
+      font-size: .95rem;
+      color: var(--gray-800);
+      background: var(--gray-100);
+      transition: border-color .2s, box-shadow .2s, background .2s;
+      outline: none;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .form-input:focus,
+    .form-select:focus,
+    .form-textarea:focus {
+      border-color: var(--red);
+      box-shadow: 0 0 0 3px rgba(150,2,15,.07);
+      background: #fff;
+    }
+    .form-input::placeholder,
+    .form-textarea::placeholder { color: #bbb; }
+    .form-textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+    .form-select {
+      appearance: none;
+      cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2396020F' stroke-width='1.8' stroke-linecap='round' fill='none'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      background-color: var(--gray-100);
+      padding-right: 40px;
+    }
+    /* File upload */
+    .file-upload {
+      border: 2px dashed var(--gray-200);
+      border-radius: 10px;
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      transition: border-color .2s, background .2s;
+      position: relative;
+      background: var(--gray-100);
+      text-align: center;
+    }
+    .file-upload:hover { border-color: var(--red); background: #fff; }
+    .file-upload input[type="file"] {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      cursor: pointer;
+      width: 100%;
+      height: 100%;
+    }
+    .file-upload__icon {
+      width: 48px; height: 48px;
+      background: rgba(150,2,15,.08);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--red);
+    }
+    .file-upload__main {
+      font-size: .92rem;
+      color: var(--gray-700);
+    }
+    .file-upload__main strong { color: var(--red); }
+    .file-upload__hint {
+      font-size: .78rem;
+      color: var(--gray-600);
+    }
+    .file-upload__name {
+      font-size: .82rem;
+      color: var(--red);
+      font-weight: 600;
+      display: none;
+    }
+    /* Divider */
+    .form-divider {
+      border: none;
+      border-top: 1px solid var(--gray-200);
+      margin: 28px 0;
+    }
+    /* Terms */
+    .form-terms {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: .86rem;
+      color: var(--gray-600);
+      line-height: 1.55;
+      margin-bottom: 24px;
+    }
+    .form-terms input[type="checkbox"] {
+      margin-top: 2px;
+      accent-color: var(--red);
+      width: 16px; height: 16px;
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+    .form-terms a { color: var(--red); font-weight: 600; text-decoration: none; }
+    .form-terms a:hover { text-decoration: underline; }
+    .form-actions { text-align: center; }
+    .form-submit {
+      padding: 16px 64px;
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: .03em;
+      border-radius: 50px;
+    }
+
+    /* Perks strip */
+    .tc-perks {
+      padding: 56px 0;
+      background: #fff;
+    }
+    .tc-perks__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      text-align: center;
+    }
+    .tc-perk {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+    .tc-perk__icon {
+      width: 60px; height: 60px;
+      background: rgba(150,2,15,.07);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--red);
+    }
+    .tc-perk__title {
+      font-size: .97rem;
+      font-weight: 800;
+      color: var(--gray-800);
+    }
+    .tc-perk__desc {
+      font-size: .84rem;
+      color: var(--gray-600);
+      line-height: 1.6;
+    }
+
+    @media (max-width: 900px) {
+      .form-card { padding: 40px 36px; }
+      .tc-perks__grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .form-grid { grid-template-columns: 1fr; }
+      .form-card { padding: 32px 24px; }
+      .tc-perks__grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="container topbar__inner">
+      <a href="index.html" class="topbar__logo">
+        <img src="assets/logotipo/coaph logo branco.png" alt="COAPH" class="topbar__logo-img" />
+      </a>
+      <div class="topbar__search">
+        <input type="text" placeholder="Pesquisar..." />
+        <button aria-label="Buscar">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </button>
+      </div>
+      <div class="topbar__socials">
+        <a href="#" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+        <a href="#" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+        <a href="#" aria-label="TikTok"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="container navbar__inner">
+      <ul class="navbar__menu">
+        <li><a href="index.html">Início</a></li>
+        <li class="has-dropdown">
+          <a href="#">Quem Somos <span class="arrow">▾</span></a>
+          <ul class="dropdown">
+            <li><a href="sobre.html">Sobre</a></li>
+            <li><a href="sedes.html">Nossas Sedes</a></li>
+            <li><a href="cooperativismo.html">Cooperativismo</a></li>
+          </ul>
+        </li>
+        <li class="has-dropdown">
+          <a href="#">Área do Cooperado <span class="arrow">▾</span></a>
+          <ul class="dropdown">
+            <li><a href="pre-cadastro.html">Pré-Cadastro</a></li>
+            <li><a href="https://areadocooperado.coaph.com.br/area_restrita_login.php" class="js-fade-link">Portal do Cooperado</a></li>
+            <li><a href="termo-adesao.html">Termo de Adesão</a></li>
+          </ul>
+        </li>
+        <li><a href="governanca.html">Governança Cooperativa</a></li>
+        <li><a href="fala-do-presidente.html">Fala do Presidente</a></li>
+        <li><a href="clube-coaph.html">Clube Coaph+</a></li>
+        <li><a href="nep.html">NEP</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li class="has-dropdown active">
+          <a href="#">Fale Conosco <span class="arrow">▾</span></a>
+          <ul class="dropdown">
+            <li><a href="trabalhe-conosco.html">Trabalhe Conosco</a></li>
+            <li><a href="ouvidoria.html">Ouvidoria</a></li>
+            <li><a href="canal-de-etica.html">Canal de Ética</a></li>
+          </ul>
+        </li>
+      </ul>
+      <button class="navbar__burger" id="burger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="sedes-hero">
+    <div class="sedes-hero__bg">
+      <img src="assets/trabalhe conosco/banner-capa-trabalhe-conosco.png" alt="Trabalhe Conosco – COAPH" />
+    </div>
+    <div class="sedes-hero__fade"></div>
+    <div class="container sedes-hero__inner">
+      <p class="page-header__breadcrumb"><a href="index.html">Início</a> <span>/</span> Fale Conosco <span>/</span> Trabalhe Conosco</p>
+      <h1 class="sedes-hero__title">Trabalhe <span>Conosco</span></h1>
+      <p class="sedes-hero__subtitle">Faça parte da nossa equipe</p>
+      <p class="sedes-hero__desc">Preencha o formulário abaixo e envie seu currículo. Nossa equipe de RH entrará em contato em breve.</p>
+    </div>
+  </header>
+
+  <!-- PERKS -->
+  <section class="tc-perks">
+    <div class="container">
+      <div class="tc-perks__grid">
+        <div class="tc-perk">
+          <div class="tc-perk__icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <p class="tc-perk__title">Cultura Cooperativista</p>
+          <p class="tc-perk__desc">Trabalhe em um ambiente colaborativo, onde todos crescem juntos.</p>
+        </div>
+        <div class="tc-perk">
+          <div class="tc-perk__icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+          </div>
+          <p class="tc-perk__title">Desenvolvimento Contínuo</p>
+          <p class="tc-perk__desc">Acesso ao programa Educa COAPH com capacitações periódicas.</p>
+        </div>
+        <div class="tc-perk">
+          <div class="tc-perk__icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </div>
+          <p class="tc-perk__title">Propósito Real</p>
+          <p class="tc-perk__desc">Contribua para a saúde de milhares de pessoas em todo o Brasil.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORM -->
+  <section class="form-section">
+    <div class="container">
+      <div class="form-section__inner">
+        <div class="form-section__header">
+          <p class="form-section__label">// Candidatura</p>
+          <h2 class="form-section__title">Envie sua candidatura</h2>
+          <p class="form-section__sub">Preencha os campos abaixo com seus dados. Analisaremos seu perfil e entraremos em contato.</p>
+        </div>
+        <div class="form-card">
+          <form action="#" method="post" enctype="multipart/form-data" novalidate>
+            <div class="form-grid">
+
+              <div class="form-group">
+                <label class="form-label" for="tc-nome">Nome Completo <span class="req">*</span></label>
+                <input class="form-input" type="text" id="tc-nome" name="nome" placeholder="Seu nome completo" required />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="tc-tel">Telefone / WhatsApp <span class="req">*</span></label>
+                <input class="form-input" type="tel" id="tc-tel" name="telefone" placeholder="(00) 00000-0000" required />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="tc-email">E-mail <span class="req">*</span></label>
+                <input class="form-input" type="email" id="tc-email" name="email" placeholder="seu@email.com" required />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="tc-area">Área de Interesse <span class="req">*</span></label>
+                <select class="form-select" id="tc-area" name="area" required>
+                  <option value="" disabled selected>Selecione uma área</option>
+                  <option value="medicina">Medicina</option>
+                  <option value="enfermagem">Enfermagem</option>
+                  <option value="tec-enfermagem">Técnico de Enfermagem</option>
+                  <option value="fisioterapia">Fisioterapia</option>
+                  <option value="administrativo">Administrativo</option>
+                  <option value="ti">Tecnologia da Informação</option>
+                  <option value="outro">Outro</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="tc-especialidade">Especialidade / Cargo</label>
+                <input class="form-input" type="text" id="tc-especialidade" name="especialidade" placeholder="Ex: Cardiologista, Técnico de Suporte…" />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="tc-cidade">Cidade / Estado <span class="req">*</span></label>
+                <input class="form-input" type="text" id="tc-cidade" name="cidade" placeholder="Ex: Fortaleza – CE" required />
+              </div>
+
+              <div class="form-group form-group--full">
+                <label class="form-label" for="tc-msg">Breve apresentação</label>
+                <textarea class="form-textarea" id="tc-msg" name="mensagem" placeholder="Conte um pouco sobre você, sua experiência e motivação para fazer parte da COAPH…"></textarea>
+              </div>
+
+              <div class="form-group form-group--full">
+                <label class="form-label">Anexar Currículo <span class="req">*</span></label>
+                <label class="file-upload" for="tc-file">
+                  <div class="file-upload__icon">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                  </div>
+                  <p class="file-upload__main"><strong>Clique para selecionar</strong> ou arraste o arquivo aqui</p>
+                  <p class="file-upload__hint">PDF, DOC ou DOCX – máximo 5 MB</p>
+                  <p class="file-upload__name" id="tc-file-name"></p>
+                  <input type="file" id="tc-file" name="curriculo" accept=".pdf,.doc,.docx" required />
+                </label>
+              </div>
+
+            </div>
+
+            <hr class="form-divider" />
+
+            <div class="form-terms">
+              <input type="checkbox" id="tc-terms" name="termos" required />
+              <label for="tc-terms">Li e aceito os <a href="#">Termos de Uso</a> e a <a href="#">Política de Privacidade</a> da COAPH.</label>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn btn--red form-submit">Enviar candidatura</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div class="footer__col">
+        <h4>Institucional</h4>
+        <ul>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="pre-cadastro.html">Pré-Cadastro</a></li>
+          <li><a href="trabalhe-conosco.html">Trabalhe Conosco</a></li>
+        </ul>
+        <div class="footer__logo-mark">
+          <img src="assets/logotipo/coaph logo branco.png" alt="COAPH" class="footer__logo-img" />
+        </div>
+      </div>
+      <div class="footer__col">
+        <h4>Entre em contato</h4>
+        <p>Telefone: <a href="tel:08530393030">(85) 3039-3030</a></p>
+        <p>E-mail: <a href="mailto:faleconosco@coaph.com.br">faleconosco@coaph.com.br</a></p>
+        <p class="footer__address">MATRIZ – Rua Joaquim Sá, 538 – Joaquim Távora – Fortaleza – CE, 60135-218 CNPJ: 11.769.319/0001-88</p>
+      </div>
+      <div class="footer__col footer__newsletter">
+        <h4>Assine nossa Newsletter</h4>
+        <div class="newsletter__form">
+          <input type="text" placeholder="Nome" />
+          <input type="email" placeholder="E-mail" />
+          <label class="newsletter__check">
+            <input type="checkbox" />
+            <span>Aceito receber e-mails promocionais da Coaph</span>
+          </label>
+          <button class="btn btn--red btn--full">Assinar newsletter</button>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>Coaph 2026 © Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/558530393030" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+  </a>
+
+  <script>
+    // Show selected file name
+    const fileInput = document.getElementById('tc-file');
+    const fileName  = document.getElementById('tc-file-name');
+    if (fileInput && fileName) {
+      fileInput.addEventListener('change', () => {
+        if (fileInput.files.length) {
+          fileName.textContent = fileInput.files[0].name;
+          fileName.style.display = 'block';
+        }
+      });
+    }
+  </script>
+  <script src="main.js?v=10"></script>
+</body>
+</html>

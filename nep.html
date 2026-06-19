@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NEP – Núcleo de Educação Permanente – COAPH</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css?v=10" />
+  <link rel="stylesheet" href="nep.css?v=1" />
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="container topbar__inner">
+      <a href="index.html" class="topbar__logo">
+        <img src="assets/logotipo/coaph logo branco.png" alt="COAPH" class="topbar__logo-img" />
+      </a>
+      <div class="topbar__search">
+        <input type="text" placeholder="Pesquisar..." />
+        <button aria-label="Buscar">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </button>
+      </div>
+      <div class="topbar__socials">
+        <a href="#" aria-label="Instagram">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+        <a href="#" aria-label="Facebook">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </a>
+        <a href="#" aria-label="TikTok">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="container navbar__inner">
+      <ul class="navbar__menu">
+        <li><a href="index.html">Início</a></li>
+        <li class="has-dropdown">
+          <a href="#">Quem Somos <span class="arrow">▾</span></a>
+          <ul class="dropdown">
+            <li><a href="sobre.html">Sobre</a></li>
+            <li><a href="sedes.html">Nossas Sedes</a></li>
+            <li><a href="cooperativismo.html">Cooperativismo</a></li>
+          </ul>
+        </li>
+        <li class="has-dropdown">
+          <a href="#">Área do Cooperado <span class="arrow">▾</span></a>
+          <ul class="dropdown">
+            <li><a href="pre-cadastro.html">Pré-Cadastro</a></li>
+            <li><a href="https://areadocooperado.coaph.com.br/area_restrita_login.php" class="js-fade-link">Portal do Cooperado</a></li>
+            <li><a href="termo-adesao.html">Termo de Adesão</a></li>
+          </ul>
+        </li>
+        <li><a href="governanca.html">Governança Cooperativa</a></li>
+        <li><a href="fala-do-presidente.html">Fala do Presidente</a></li>
+        <li><a href="clube-coaph.html">Clube Coaph+</a></li>
+        <li class="active"><a href="nep.html">NEP</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li class="has-dropdown">
+          <a href="#">Fale Conosco <span class="arrow">▾</span></a>
+          <ul class="dropdown">
+            <li><a href="trabalhe-conosco.html">Trabalhe Conosco</a></li>
+            <li><a href="ouvidoria.html">Ouvidoria</a></li>
+            <li><a href="canal-de-etica.html">Canal de Ética</a></li>
+          </ul>
+        </li>
+      </ul>
+      <button class="navbar__burger" id="burger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- BANNER -->
+  <header class="nep-banner">
+    <img src="assets/nep/banner capa/nep-capa.png" alt="NEP – Núcleo de Educação Permanente" class="nep-banner__img" />
+  </header>
+
+  <!-- QUEM SOMOS -->
+  <section class="nep-sobre">
+    <div class="container">
+      <div class="nep-sobre__inner">
+        <div class="nep-sobre__content">
+          <span class="nep-tag">Quem somos</span>
+          <h2 class="nep-sobre__heading">Sobre o <strong>NEP</strong></h2>
+          <p class="nep-sobre__text">O Núcleo de Educação Permanente (NEP) é o setor responsável pela promoção do conhecimento técnico, científico e humanizado voltado aos profissionais da saúde vinculados à nossa cooperativa. Atuamos com programas de capacitação contínua, desenvolvimento científico e formação técnico-profissional, por meio de iniciativas próprias e elaboradas pelo próprio núcleo, que planeja, executa e avalia ações formativas alinhadas às necessidades da prática assistencial.</p>
+          <p class="nep-sobre__text">Contamos também com parcerias educacionais estratégicas que ampliam e fortalecem nosso leque de oportunidades, garantindo uma oferta educacional diversificada, qualificada e integrada ao cotidiano dos serviços de saúde.</p>
+          <div class="nep-sobre__stats">
+            <div class="nep-sobre__stat"><strong>3</strong><span>Programas ativos</span></div>
+            <div class="nep-sobre__stat"><strong>100%</strong><span>Sem ônus ao cooperado</span></div>
+            <div class="nep-sobre__stat"><strong>Multi</strong><span>Categorias profissionais</span></div>
+          </div>
+        </div>
+        <div class="nep-sobre__img-wrap">
+          <img src="assets/nep/Quem somos - sobre o nep/sobre-o-nep.png" alt="Sobre o NEP – treinamento médico" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOSSA EQUIPE -->
+  <section class="nep-equipe-section">
+    <div class="container">
+      <div class="nep-equipe-section__header">
+        <span class="nep-tag nep-tag--dark">Nossa equipe</span>
+        <h2 class="nep-equipe-section__title">Quem faz o <strong>NEP acontecer</strong></h2>
+      </div>
+      <div class="nep-equipe-section__grid">
+        <div class="nep-equipe-section__member" data-lightbox="0">
+          <div class="nep-equipe-section__photo">
+            <img src="assets/nep/nossa equipe/dr-williams.jpeg" alt="Dr. Williams" />
+          </div>
+          <p class="nep-equipe-section__name">Dr. Williams</p>
+          <p class="nep-equipe-section__role">Médico</p>
+        </div>
+        <div class="nep-equipe-section__member" data-lightbox="1">
+          <div class="nep-equipe-section__photo">
+            <img src="assets/nep/nossa equipe/dr-alexandre-cavalcante.jpeg" alt="Dr. Alexandre Cavalcante" />
+          </div>
+          <p class="nep-equipe-section__name">Dr. Alexandre Cavalcante</p>
+          <p class="nep-equipe-section__role">Consultor Técnico Pedagógico</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALORES -->
+  <section class="nep-valores">
+    <div class="container">
+      <div class="nep-valores__header">
+        <h2 class="nep-valores__title">Nossos <strong>valores</strong></h2>
+        <p class="nep-valores__sub">Os pilares que guiam cada ação do NEP.</p>
+      </div>
+      <div class="nep-valores__grid">
+        <div class="nep-valores__item">
+          <div class="nep-valores__icon">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+          </div>
+          <strong>O que nos move</strong>
+          <p>Formar, inspirar e transformar pessoas por meio da educação cooperativista e científica.</p>
+        </div>
+        <div class="nep-valores__item">
+          <div class="nep-valores__icon">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <strong>O que acreditamos</strong>
+          <p>Que o aprendizado é um processo vivo, construído em equipe e sustentado por valores humanos.</p>
+        </div>
+        <div class="nep-valores__item">
+          <div class="nep-valores__icon">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </div>
+          <strong>Como fazemos</strong>
+          <p>Unimos inovação, empatia e compromisso técnico para promover experiências de ensino que geram impacto real na assistência em saúde.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRAMAS -->
+  <section class="nep-programas">
+    <div class="container">
+      <span class="nep-tag">Programas</span>
+      <h2 class="nep-section-title">Conheça nossos programas</h2>
+      <div class="gv-accordion">
+
+        <div class="gv-accordion__item">
+          <button class="gv-accordion__trigger" aria-expanded="false">
+            <div class="gv-accordion__trigger-left">
+              <div class="gv-accordion__cat-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+              </div>
+              <p class="gv-accordion__cat-name">Programa Educa Coaph</p>
+            </div>
+            <div class="gv-accordion__chevron">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+          </button>
+          <div class="gv-accordion__body">
+            <div class="gv-accordion__body-inner">
+              <div class="gv-accordion__divider"></div>
+              <div class="nep-accordion__content">
+                <div class="nep-accordion__content-img">
+                  <img src="assets/nep/Conheça nossos programas/educa-coaph.png" alt="Programa Educa Coaph" />
+                </div>
+                <div class="nep-accordion__content-text">
+                  <h4 class="nep-accordion__content-title">Educa COAPH</h4>
+                  <p>O <strong>Educa COAPH</strong> é o programa de educação permanente <strong>sem ônus para o cooperado</strong>, criado para fortalecer o desenvolvimento profissional e a qualidade da assistência em todas as áreas de atuação da cooperativa.</p>
+                  <p>A partir de <strong>levantamentos de necessidades de treinamento</strong>, o NEP identifica as principais demandas de capacitação e planeja ações mensais em diversos formatos — <strong>presenciais, online e híbridos</strong> — abrangendo <strong>todas as categorias profissionais</strong>.</p>
+                  <p>O programa representa o compromisso da cooperativa com a <strong>formação contínua, a valorização do cooperado e a excelência nos serviços prestados à comunidade.</strong></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="gv-accordion__item">
+          <button class="gv-accordion__trigger" aria-expanded="false">
+            <div class="gv-accordion__trigger-left">
+              <div class="gv-accordion__cat-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              </div>
+              <p class="gv-accordion__cat-name">Programa de Desenvolvimento Científico</p>
+            </div>
+            <div class="gv-accordion__chevron">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+          </button>
+          <div class="gv-accordion__body">
+            <div class="gv-accordion__body-inner">
+              <div class="gv-accordion__divider"></div>
+              <div class="nep-accordion__content">
+                <div class="nep-accordion__content-img">
+                  <img src="assets/nep/Conheça nossos programas/Programa-de-Desenvolvimento-Ci.png" alt="Programa de Desenvolvimento Científico" />
+                </div>
+                <div class="nep-accordion__content-text">
+                  <h4 class="nep-accordion__content-title">Programa de Desenvolvimento Científico</h4>
+                  <p>O <strong>Programa de Desenvolvimento Científico</strong> tem como foco o <strong>incentivo à produção e à disseminação do conhecimento</strong> dentro da cooperativa.</p>
+                  <p>Por meio dele, são promovidos <strong>simpósios, jornadas, congressos, grupos de pesquisa e apoio à publicação de artigos científicos</strong>, estimulando a participação ativa dos cooperados em atividades de cunho acadêmico e técnico-científico.</p>
+                  <p>O programa fortalece o protagonismo dos profissionais da cooperativa no cenário científico, <strong>estimulando a inovação, a troca de experiências e a consolidação da prática baseada em evidências.</strong></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="gv-accordion__item">
+          <button class="gv-accordion__trigger" aria-expanded="false">
+            <div class="gv-accordion__trigger-left">
+              <div class="gv-accordion__cat-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="15" x2="15" y2="15"/><line x1="9" y1="11" x2="15" y2="11"/></svg>
+              </div>
+              <p class="gv-accordion__cat-name">Programa de Educação Continuada</p>
+            </div>
+            <div class="gv-accordion__chevron">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+          </button>
+          <div class="gv-accordion__body">
+            <div class="gv-accordion__body-inner">
+              <div class="gv-accordion__divider"></div>
+              <div class="nep-accordion__content">
+                <div class="nep-accordion__content-img">
+                  <img src="assets/nep/Conheça nossos programas/Programa-de-Educação-Contin.png" alt="Programa de Educação Continuada" />
+                </div>
+                <div class="nep-accordion__content-text">
+                  <h4 class="nep-accordion__content-title">Programa de Educação Continuada</h4>
+                  <p>O <strong>Programa de Educação Continuada</strong> é voltado para o <strong>desenvolvimento individual e o aperfeiçoamento técnico</strong> dos cooperados e demais profissionais da saúde.</p>
+                  <p>Oferece <strong>cursos, treinamentos e capacitações com ônus</strong>, possibilitando o acesso a formações especializadas com <strong>condições diferenciadas e descontos exclusivos para cooperados</strong>.</p>
+                  <p>Com foco na atualização constante e na valorização da prática profissional, o programa amplia as oportunidades de aprendizado e <strong>apoia o crescimento pessoal e técnico de cada participante.</strong></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ENTRE EM CONTATO -->
+  <section class="nep-contato">
+    <div class="container">
+      <div class="nep-contato__inner">
+        <div class="nep-contato__text">
+          <span class="nep-tag nep-tag--white">Fale com o NEP</span>
+          <h2 class="nep-contato__title">Dúvidas, parcerias ou suporte?</h2>
+          <p class="nep-contato__sub">Nossa equipe está pronta para te atender. Entre em contato pelo WhatsApp e tire todas as suas dúvidas sobre os programas do NEP.</p>
+          <a href="https://wa.me/558530393030" class="btn nep-contato__btn" target="_blank" rel="noopener">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+            Falar pelo WhatsApp
+          </a>
+        </div>
+        <div class="nep-contato__icon-wrap">
+          <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.15)" stroke-width=".6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div class="footer__col">
+        <h4>Institucional</h4>
+        <ul>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="pre-cadastro.html">Pré-Cadastro</a></li>
+          <li><a href="trabalhe-conosco.html">Trabalhe Conosco</a></li>
+        </ul>
+        <div class="footer__logo-mark">
+          <img src="assets/logotipo/coaph logo branco.png" alt="COAPH" class="footer__logo-img" />
+        </div>
+      </div>
+      <div class="footer__col">
+        <h4>Entre em contato</h4>
+        <p>Telefone: <a href="tel:08530393030">(85) 3039-3030</a></p>
+        <p>E-mail: <a href="mailto:faleconosco@coaph.com.br">faleconosco@coaph.com.br</a></p>
+        <p class="footer__address">MATRIZ – Rua Joaquim Sá, 538 – Joaquim Távora – Fortaleza – CE, 60135-218 CNPJ: 11.769.319/0001-88</p>
+      </div>
+      <div class="footer__col footer__newsletter">
+        <h4>Assine nossa Newsletter</h4>
+        <div class="newsletter__form">
+          <input type="text" placeholder="Nome" />
+          <input type="email" placeholder="E-mail" />
+          <label class="newsletter__check">
+            <input type="checkbox" />
+            <span>Aceito receber e-mails promocionais da Coaph</span>
+          </label>
+          <button class="btn btn--red btn--full">Assinar newsletter</button>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>Coaph 2026 © Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Float -->
+  <a href="https://wa.me/558530393030" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+  </a>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <div class="lightbox__overlay" id="lightboxOverlay"></div>
+    <div class="lightbox__box">
+      <button class="lightbox__close" id="lightboxClose" aria-label="Fechar">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <button class="lightbox__arrow lightbox__arrow--prev" id="lightboxPrev" aria-label="Anterior">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <img class="lightbox__img" id="lightboxImg" src="" alt="" />
+      <button class="lightbox__arrow lightbox__arrow--next" id="lightboxNext" aria-label="Próxima">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+      <div class="lightbox__thumbs" id="lightboxThumbs"></div>
+    </div>
+  </div>
+
+  <script src="main.js?v=10"></script>
+</body>
+</html>

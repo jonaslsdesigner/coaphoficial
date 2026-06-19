@@ -1,0 +1,638 @@
+/* =============================================
+   CLUBE COAPH+ — Estilos exclusivos da página
+   ============================================= */
+
+/* ---------- ESTILOS ESPECÍFICOS DOS SLIDES ---------- */
+.clube-banner__desc--bordered {
+  border-left: 3px solid #96020F;
+  padding-left: 14px;
+  font-size: .85rem;
+  line-height: 1.6;
+  color: rgba(255,255,255,.9);
+}
+
+.clube-banner__desc--bordered strong {
+  display: block;
+  font-weight: 800;
+  color: #fff;
+}
+
+.clube-banner__plus-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: .75em;
+  height: .75em;
+  background: #FFD600;
+  color: #1a1a1a;
+  border-radius: 50%;
+  font-size: .7em;
+  font-weight: 900;
+  vertical-align: middle;
+  margin-left: 4px;
+  line-height: 1;
+}
+
+/* ---------- BANNER ROTATIVO (versão compacta) ---------- */
+.top-banner--compact {
+  height: 580px;
+}
+
+.top-banner--compact .top-banner__slide img {
+  -webkit-user-drag: none;
+  user-select: none;
+  pointer-events: none;
+}
+
+.top-banner--compact .top-banner__subtitle {
+  font-size: 1.1rem;
+}
+
+.top-banner--compact .top-banner__subtitle--spaced {
+  font-size: 1rem;
+  letter-spacing: .06em;
+}
+
+.top-banner--compact .top-banner__title {
+  font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+  margin-bottom: 20px;
+}
+
+.top-banner--compact .top-banner__desc {
+  font-size: 1.15rem;
+  max-width: 520px;
+}
+
+.top-banner--compact .clube-banner__desc--bordered {
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  .top-banner--compact {
+    height: 360px;
+  }
+}
+
+/* ---------- LOGOS CARROSSEL ---------- */
+.clube-logos {
+  background: #efefef;
+  padding: 36px 0 28px;
+  border-bottom: 1px solid #e0e0e0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+.clube-logos__viewport {
+  width: 100%;
+  max-width: 1200px;
+  overflow: hidden;
+  padding: 0 16px;
+}
+
+.clube-logos__track {
+  display: flex;
+  gap: 16px;
+  transition: transform .45s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.clube-logos__item {
+  flex: 0 0 calc((100% - 4 * 16px) / 5);
+  background: #fff;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 28px 20px;
+  box-shadow: 0 1px 6px rgba(0,0,0,.07);
+}
+
+.clube-logos__item img {
+  width: 100%;
+  height: 190px;
+  object-fit: contain;
+  pointer-events: none;
+  user-select: none;
+}
+
+.clube-logos__arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-60%);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #555;
+  z-index: 2;
+  transition: background .2s, color .2s;
+}
+
+.clube-logos__arrow:hover { background: #96020F; color: #fff; }
+.clube-logos__arrow--prev { left: 20px; }
+.clube-logos__arrow--next { right: 20px; }
+
+.clube-logos__counter {
+  font-size: .82rem;
+  font-weight: 700;
+  color: #96020F;
+  letter-spacing: .04em;
+}
+
+@media (max-width: 900px) {
+  .clube-logos__item {
+    flex: 0 0 calc((100% - 2 * 16px) / 3);
+  }
+}
+
+@media (max-width: 600px) {
+  .clube-logos__item {
+    flex: 0 0 calc((100% - 1 * 16px) / 2);
+  }
+}
+
+/* ---------- INTRO ---------- */
+.clube-intro {
+  padding: 64px 0 48px;
+  background: #fafafa;
+}
+
+.clube-intro__inner {
+  max-width: 760px;
+}
+
+.clube-intro__title {
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+  font-weight: 800;
+  color: #1a1a1a;
+  line-height: 1.25;
+  margin: 8px 0 20px;
+}
+
+.clube-intro__title span {
+  color: #96020F;
+}
+
+.clube-intro__text {
+  font-size: .97rem;
+  color: #555;
+  line-height: 1.75;
+  max-width: 680px;
+}
+
+/* ---------- FILTROS ---------- */
+.clube-parceiros {
+  padding: 0 0 72px;
+  background: #fafafa;
+}
+
+.clube-filtros {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 36px;
+  padding-top: 8px;
+}
+
+.clube-filtros__label {
+  font-weight: 900;
+  font-size: .9rem;
+  color: #96020F;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  margin-right: 4px;
+  -webkit-text-stroke: .3px #96020F;
+}
+
+.clube-filtros__btn {
+  padding: 8px 20px;
+  border-radius: 30px;
+  border: 1.5px solid #ddd;
+  background: #fff;
+  font-family: inherit;
+  font-size: .82rem;
+  font-weight: 600;
+  color: #555;
+  cursor: pointer;
+  transition: all .2s;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+
+.clube-filtros__btn:hover,
+.clube-filtros__btn.active {
+  background: #96020F;
+  border-color: #96020F;
+  color: #fff;
+}
+
+/* ---------- CARDS DE PARCEIROS ---------- */
+.clube-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.clube-card {
+  display: flex;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0,0,0,.07);
+  transition: box-shadow .2s, transform .2s;
+}
+
+.clube-card:hover {
+  box-shadow: 0 6px 24px rgba(0,0,0,.12);
+  transform: translateY(-2px);
+}
+
+.clube-card[data-hidden="true"] {
+  display: none;
+}
+
+.clube-card__img {
+  width: 220px;
+  min-width: 220px;
+  background: #1a1a1a;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.clube-card__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.clube-card__body {
+  padding: 24px 28px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.clube-card__badge {
+  display: inline-block;
+  padding: 3px 12px;
+  background: #96020F;
+  color: #fff;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  border-radius: 30px;
+  align-self: flex-start;
+}
+
+.clube-card__name {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.clube-card__discount {
+  font-size: .8rem;
+  font-weight: 800;
+  color: #96020F;
+  background: #fff0f0;
+  border-left: 3px solid #96020F;
+  padding: 5px 10px;
+  border-radius: 0 6px 6px 0;
+  margin: 0;
+  line-height: 1.45;
+}
+
+.clube-card__desc {
+  font-size: .88rem;
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.clube-card__info {
+  list-style: none;
+  padding: 0;
+  margin: 4px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.clube-card__info li {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: .82rem;
+  color: #777;
+}
+
+.clube-card__info li svg {
+  flex-shrink: 0;
+  opacity: .6;
+}
+
+.clube-card__btn {
+  display: inline-block;
+  align-self: flex-start;
+  margin-top: 8px;
+  padding: 9px 24px;
+  background: #96020F;
+  color: #fff;
+  font-weight: 700;
+  font-size: .83rem;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background .2s;
+}
+
+.clube-card__btn:hover {
+  background: #7a0109;
+}
+
+/* ---------- SEÇÃO APP ---------- */
+.clube-app {
+  background: #fff;
+  padding: 80px 0 60px;
+}
+
+.clube-app__inner {
+  display: flex;
+  align-items: center;
+  gap: 64px;
+  margin-bottom: 56px;
+}
+
+.clube-app__phones {
+  flex: 0 0 50%;
+}
+
+.clube-app__img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.clube-app__content {
+  flex: 1;
+  text-align: center;
+}
+
+.clube-app__title {
+  font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+  font-weight: 900;
+  color: #96020F;
+  line-height: 1.25;
+  margin: 0 0 20px;
+}
+
+.clube-app__text {
+  font-size: .95rem;
+  color: #555;
+  line-height: 1.85;
+}
+
+.clube-app__benefits {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  border-top: 1px solid #eee;
+  padding-top: 48px;
+}
+
+.clube-app__benefit {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+  max-width: 320px;
+}
+
+.clube-app__benefit-icon {
+  width: 52px;
+  height: 52px;
+  min-width: 52px;
+  background: #96020F;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #fff;
+}
+
+.clube-app__benefit strong {
+  font-size: .95rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  line-height: 1.4;
+}
+
+/* ---------- SEJA UM PARCEIRO CTA ---------- */
+.clube-parceiro-cta {
+  background: linear-gradient(135deg, #7a0109 0%, #96020F 55%, #b00312 100%);
+  padding: 0;
+  overflow: visible;
+  position: relative;
+  z-index: 1;
+}
+
+.clube-parceiro-cta__inner {
+  display: flex;
+  align-items: flex-end;
+  gap: 0;
+  min-height: 360px;
+}
+
+.clube-parceiro-cta__img-wrap {
+  flex: 0 0 50%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  margin-top: -100px;
+}
+
+.clube-parceiro-cta__img {
+  width: 100%;
+  max-width: 560px;
+  display: block;
+  object-fit: contain;
+}
+
+.clube-parceiro-cta__content {
+  flex: 1;
+  padding: 60px 40px 60px 0;
+  text-align: center;
+}
+
+.clube-parceiro-cta__title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.15;
+  margin: 0 0 16px;
+}
+
+.clube-parceiro-cta__text {
+  font-size: 1.05rem;
+  color: rgba(255,255,255,.85);
+  line-height: 1.6;
+  margin-bottom: 32px;
+}
+
+.clube-parceiro-cta__btn {
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+  padding: 14px 40px !important;
+  border-radius: 40px !important;
+}
+
+/* ---------- BENEFÍCIOS EMPRESA ---------- */
+.clube-empresa {
+  background: #fff;
+  padding: 100px 0;
+}
+
+.clube-empresa__inner {
+  display: flex;
+  align-items: center;
+  gap: 80px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.clube-empresa__content {
+  flex: 0 0 auto;
+  max-width: 380px;
+  text-align: center;
+}
+
+.clube-empresa__title {
+  font-size: clamp(1.5rem, 2.8vw, 2rem);
+  font-weight: 900;
+  color: #96020F;
+  margin-bottom: 20px;
+  line-height: 1.25;
+}
+
+.clube-empresa__text {
+  font-size: .95rem;
+  color: #555;
+  line-height: 1.85;
+}
+
+.clube-empresa__benefits {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.clube-empresa__benefit {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.clube-empresa__benefit-icon {
+  flex-shrink: 0;
+}
+
+.clube-empresa__benefit span {
+  font-size: 1rem;
+  color: #444;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+/* ---------- RESPONSIVO ---------- */
+@media (max-width: 900px) {
+  .clube-hero__img-placeholder {
+    width: 100%;
+    opacity: .2;
+  }
+
+  .clube-app__inner {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .clube-app__phones {
+    flex: none;
+    width: 100%;
+    max-width: 480px;
+  }
+
+  .clube-app__benefits {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .clube-app__benefit {
+    max-width: 100%;
+  }
+
+  .clube-parceiro-cta__inner {
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  .clube-parceiro-cta__img-wrap {
+    flex: none;
+    width: 100%;
+    max-width: 380px;
+  }
+
+  .clube-parceiro-cta__content {
+    padding: 40px 24px;
+  }
+
+  .clube-empresa__inner {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .clube-empresa__content {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 700px) {
+  .clube-card {
+    flex-direction: column;
+  }
+
+  .clube-card__img {
+    width: 100%;
+    min-width: unset;
+    height: 160px;
+  }
+
+  .clube-filtros {
+    gap: 6px;
+  }
+
+  .clube-filtros__btn {
+    padding: 7px 14px;
+    font-size: .78rem;
+  }
+
+  .clube-parceiro-cta__content {
+    max-width: 100%;
+  }
+}
