@@ -3,212 +3,150 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Canal de Ética – COAPH</title>
+  <title>Portal de Chamados – Canal de Ética COAPH</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css?v=18" />
   <style>
     /* ── HERO ── */
-    .etica-hero {
+    .ch-hero {
       position: relative;
-      min-height: 460px;
+      height: 280px;
       display: flex;
-      align-items: center;
+      align-items: flex-end;
       overflow: hidden;
     }
-    .etica-hero__bg {
+    .ch-hero__bg { position: absolute; inset: 0; }
+    .ch-hero__bg img { width: 100%; height: 100%; object-fit: cover; object-position: center 35%; display: block; }
+    .ch-hero__overlay {
       position: absolute; inset: 0;
+      background: linear-gradient(90deg, rgba(0,0,0,.78) 0%, rgba(0,0,0,.5) 60%, rgba(0,0,0,.25) 100%);
     }
-    .etica-hero__bg img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      object-position: center 30%;
-      display: block;
-    }
-    .etica-hero__overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(90deg, rgba(0,0,0,.72) 0%, rgba(0,0,0,.45) 60%, rgba(0,0,0,.2) 100%);
-    }
-    .etica-hero__content {
-      position: relative;
-      z-index: 2;
-      padding: 80px 0;
-      max-width: 560px;
-    }
-    .etica-hero__breadcrumb {
-      font-size: .78rem;
-      color: rgba(255,255,255,.65);
-      margin-bottom: 16px;
-    }
-    .etica-hero__breadcrumb a { color: rgba(255,255,255,.8); text-decoration: none; }
-    .etica-hero__breadcrumb span { margin: 0 6px; }
-    .etica-hero__title {
-      font-size: clamp(2rem, 5vw, 3.2rem);
-      font-weight: 900;
+    .ch-hero__content {
+      position: relative; z-index: 2;
+      padding: 0 0 36px;
       color: #fff;
-      margin: 0 0 14px;
-      line-height: 1.1;
     }
-    .etica-hero__title span { color: var(--red-light); }
-    .etica-hero__sub {
-      font-size: 1.08rem;
-      color: rgba(255,255,255,.82);
-      line-height: 1.65;
-      margin: 0;
+    .ch-hero__breadcrumb {
+      font-size: .75rem; color: rgba(255,255,255,.6);
+      margin-bottom: 10px;
     }
+    .ch-hero__breadcrumb a { color: rgba(255,255,255,.75); text-decoration: none; }
+    .ch-hero__breadcrumb a:hover { color: #fff; }
+    .ch-hero__breadcrumb span { margin: 0 6px; opacity: .5; }
+    .ch-hero__title { font-size: clamp(1.6rem,4vw,2.4rem); font-weight: 900; margin: 0 0 6px; }
+    .ch-hero__sub   { font-size: .92rem; color: rgba(255,255,255,.75); margin: 0; }
 
-    /* ── QUANDO USAR ── */
-    .etica-quando {
-      padding: 56px 0 80px;
-      background: #fff;
-    }
-    .etica-quando__inner {
-      max-width: 820px;
-      margin: 0 auto;
-    }
-    .etica-quando__title {
-      font-size: 1.15rem;
-      font-weight: 800;
-      color: var(--red);
-      margin-bottom: 28px;
-    }
-    .etica-quando__grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-    .etica-case {
-      background: var(--gray-100);
-      border-radius: 14px;
-      padding: 24px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      border: 1.5px solid var(--gray-200);
-      transition: border-color .2s, transform .2s, box-shadow .2s;
-    }
-    .etica-case:hover {
-      border-color: var(--red-light);
-      transform: translateY(-3px);
-      box-shadow: 0 6px 24px rgba(150,2,15,.08);
-    }
-    .etica-case__icon {
-      width: 48px; height: 48px;
-      background: rgba(150,2,15,.08);
-      border-radius: 12px;
-      display: flex; align-items: center; justify-content: center;
-      color: var(--red);
-      flex-shrink: 0;
-    }
-    .etica-case__title {
-      font-size: .95rem;
-      font-weight: 800;
-      color: var(--gray-800);
-      line-height: 1.3;
-    }
-    .etica-case__desc {
-      font-size: .82rem;
-      color: var(--gray-600);
-      line-height: 1.6;
-      margin: 0;
-    }
-
-    /* ── GARANTIAS inline no quando ── */
-    .etica-quando__garantias {
-      display: flex;
-      flex-wrap: wrap;
-      margin-top: 44px;
-      padding-top: 36px;
-      border-top: 1.5px solid var(--gray-200);
-    }
-    .etica-quando__garantia {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      gap: 10px;
-      flex: 1;
-      min-width: 160px;
-      padding: 20px 24px;
-    }
-    .etica-quando__garantia + .etica-quando__garantia {
-      border-left: 1.5px solid var(--gray-200);
-    }
-    .etica-quando__garantia-icon {
-      width: 44px; height: 44px;
-      background: rgba(150,2,15,.07);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      color: var(--red);
-      flex-shrink: 0;
-    }
-    .etica-quando__garantia-label {
-      font-size: .88rem;
-      font-weight: 800;
-      color: var(--gray-800);
-      margin-bottom: 2px;
-    }
-    .etica-quando__garantia-desc {
-      font-size: .76rem;
-      color: var(--gray-500);
-      line-height: 1.45;
-    }
-
-    /* ── PORTAL (ex-CTA) ── */
-    .etica-portal { background: var(--gray-100); padding: 80px 0 96px; }
-    .etica-portal__header { max-width: 660px; margin: 0 auto 48px; text-align: center; }
-    #portal[data-view="new"] .etica-portal__header,
-    #portal[data-view="success"] .etica-portal__header,
-    #portal[data-view="ticket"] .etica-portal__header { display: none; }
-
-    .etica-cta__title { font-size: clamp(1.6rem,3vw,2.2rem); font-weight: 900; color: var(--gray-800); margin-bottom: 12px; }
-    .etica-cta__desc  { font-size: .97rem; color: var(--gray-600); line-height: 1.75; margin-bottom: 36px; }
-    .etica-cta__seals { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
-    .etica-cta__seal  { display: inline-flex; align-items: center; gap: 7px; font-size: .78rem; font-weight: 700; color: var(--gray-600); background: #fff; border: 1.5px solid var(--gray-200); border-radius: 50px; padding: 7px 16px; }
-    .etica-cta__seal svg { color: var(--red); flex-shrink: 0; }
-
-    /* ── CHAMADOS VIEWS ── */
+    /* ── MAIN LAYOUT ── */
+    .ch-main { background: var(--gray-100); min-height: 60vh; padding: 52px 0 96px; }
     .ch-view { display: none; }
     .ch-view.active { display: block; }
 
-    /* back button */
-    .ch-back { display: inline-flex; align-items: center; gap: 7px; font-size: .82rem; font-weight: 700; color: var(--red); background: none; border: none; cursor: pointer; padding: 0; margin-bottom: 28px; text-decoration: none; transition: opacity .15s; }
+    /* ── BACK BUTTON ── */
+    .ch-back {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-size: .82rem; font-weight: 700; color: var(--red);
+      background: none; border: none; cursor: pointer; padding: 0;
+      margin-bottom: 28px;
+      text-decoration: none;
+      transition: opacity .15s;
+    }
     .ch-back:hover { opacity: .75; }
 
-    /* home: two cards */
+    /* ── HOME: two option cards ── */
     .ch-home { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 860px; margin: 0 auto; }
-    .ch-opt { background: var(--white); border-radius: var(--radius); padding: 40px 36px; display: flex; flex-direction: column; gap: 14px; box-shadow: var(--shadow-sm); border: 1.5px solid var(--gray-200); transition: box-shadow .2s, border-color .2s; }
+    .ch-opt {
+      background: var(--white); border-radius: var(--radius);
+      padding: 40px 36px; display: flex; flex-direction: column; gap: 14px;
+      box-shadow: var(--shadow-sm);
+      border: 1.5px solid var(--gray-200);
+      transition: box-shadow .2s, border-color .2s;
+    }
     .ch-opt:hover { box-shadow: var(--shadow-md); border-color: rgba(150,2,15,.18); }
-    .ch-opt__icon { width: 52px; height: 52px; border-radius: 14px; background: rgba(150,2,15,.08); display: flex; align-items: center; justify-content: center; color: var(--red); }
+    .ch-opt__icon {
+      width: 52px; height: 52px; border-radius: 14px;
+      background: rgba(150,2,15,.08);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--red);
+    }
     .ch-opt__title { font-size: 1.1rem; font-weight: 900; color: #1a1a1a; margin: 0; }
     .ch-opt__desc  { font-size: .88rem; color: var(--gray-600); line-height: 1.65; margin: 0; flex: 1; }
 
-    /* track input */
+    /* track input group */
     .ch-track-group { display: flex; gap: 10px; margin-top: 4px; }
-    .ch-track-group input { flex: 1; padding: 11px 16px; border-radius: 10px; border: 1.5px solid var(--gray-200); font-family: var(--font-body); font-size: .88rem; background: var(--white); transition: border-color .2s; text-transform: uppercase; letter-spacing: .05em; }
+    .ch-track-group input {
+      flex: 1; padding: 11px 16px; border-radius: 10px;
+      border: 1.5px solid var(--gray-200);
+      font-family: var(--font-body); font-size: .88rem;
+      background: var(--white); transition: border-color .2s;
+      text-transform: uppercase; letter-spacing: .05em;
+    }
     .ch-track-group input:focus { outline: none; border-color: var(--red); }
     .ch-track-group input::placeholder { text-transform: none; letter-spacing: normal; }
-    .ch-track-group button { padding: 11px 20px; border-radius: 10px; background: var(--red); color: #fff; border: none; font-family: var(--font-body); font-weight: 700; font-size: .88rem; cursor: pointer; white-space: nowrap; transition: background .2s; }
+    .ch-track-group button {
+      padding: 11px 20px; border-radius: 10px;
+      background: var(--red); color: #fff;
+      border: none; font-family: var(--font-body); font-weight: 700;
+      font-size: .88rem; cursor: pointer; white-space: nowrap;
+      transition: background .2s;
+    }
     .ch-track-group button:hover { background: var(--red-dark); }
 
     /* recent tickets */
+    .ch-recent { max-width: 860px; margin: 36px auto 0; }
+    .ch-recent__title { font-size: .8rem; font-weight: 700; color: var(--gray-400); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 14px; }
+    .ch-recent-item {
+      background: var(--white); border-radius: 12px; padding: 16px 20px;
+      margin-bottom: 10px; display: flex; align-items: center; gap: 16px;
+      cursor: pointer; border: 1.5px solid var(--gray-200);
+      transition: border-color .15s, box-shadow .15s;
+    }
+    .ch-recent-item:hover { border-color: rgba(150,2,15,.25); box-shadow: var(--shadow-sm); }
+    .ch-recent-item__info { flex: 1; min-width: 0; }
+    .ch-recent-item__subject { font-weight: 700; font-size: .9rem; color: #1a1a1a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .ch-recent-item__meta   { font-size: .75rem; color: var(--gray-400); margin-top: 3px; }
+    .ch-recent-item__proto  { font-size: .75rem; font-weight: 700; color: var(--red); font-family: monospace; }
 
-    /* error */
-    .ch-err { font-size: .82rem; color: #c62828; background: #fdecea; border-radius: 8px; padding: 8px 14px; margin-top: 10px; }
+    /* ── ERROR ── */
+    .ch-err {
+      font-size: .82rem; color: #c62828;
+      background: #fdecea; border-radius: 8px;
+      padding: 8px 14px; margin-top: 10px;
+    }
 
-    /* form */
-    .ch-form-wrap { max-width: 720px; margin: 0 auto; background: var(--white); border-radius: var(--radius); padding: 44px 48px; box-shadow: var(--shadow-sm); }
+    /* ── FORM ── */
+    .ch-form-wrap {
+      max-width: 720px; margin: 0 auto;
+      background: var(--white); border-radius: var(--radius);
+      padding: 44px 48px; box-shadow: var(--shadow-sm);
+    }
     .ch-form-wrap h2 { font-size: 1.3rem; font-weight: 900; color: #1a1a1a; margin: 0 0 32px; }
     .ch-field { margin-bottom: 22px; }
     .ch-field label { display: block; font-size: .82rem; font-weight: 700; color: #1a1a1a; margin-bottom: 7px; }
-    .ch-field input, .ch-field select, .ch-field textarea { width: 100%; padding: 11px 16px; border: 1.5px solid var(--gray-200); border-radius: 10px; font-family: var(--font-body); font-size: .9rem; color: #1a1a1a; background: var(--white); transition: border-color .2s; }
+    .ch-field input,
+    .ch-field select,
+    .ch-field textarea {
+      width: 100%; padding: 11px 16px;
+      border: 1.5px solid var(--gray-200); border-radius: 10px;
+      font-family: var(--font-body); font-size: .9rem; color: #1a1a1a;
+      background: var(--white); transition: border-color .2s;
+    }
     .ch-field select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 7L11 1' stroke='%23999' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
-    .ch-field input:focus, .ch-field select:focus, .ch-field textarea:focus { outline: none; border-color: var(--red); }
+    .ch-field input:focus,
+    .ch-field select:focus,
+    .ch-field textarea:focus { outline: none; border-color: var(--red); }
     .ch-field textarea { min-height: 160px; resize: vertical; line-height: 1.65; }
     .ch-field__hint { font-size: .75rem; color: var(--gray-400); margin-top: 6px; }
     .ch-char-count { font-size: .72rem; color: var(--gray-400); text-align: right; margin-top: 4px; }
-    .ch-file-zone { border: 2px dashed var(--gray-200); border-radius: 10px; padding: 24px; text-align: center; cursor: pointer; transition: border-color .2s, background .2s; position: relative; }
+
+    /* file input */
+    .ch-file-zone {
+      border: 2px dashed var(--gray-200); border-radius: 10px;
+      padding: 24px; text-align: center; cursor: pointer;
+      transition: border-color .2s, background .2s;
+      position: relative;
+    }
     .ch-file-zone:hover { border-color: var(--red); background: rgba(150,2,15,.02); }
     .ch-file-zone input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
     .ch-file-zone__label { font-size: .88rem; color: var(--gray-600); pointer-events: none; }
@@ -218,105 +156,171 @@
     .ch-file-item svg { flex-shrink: 0; color: var(--red); }
     .ch-file-item__name { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
     .ch-file-item__size { color: var(--gray-400); flex-shrink: 0; }
+    .ch-file-remove { background: none; border: none; cursor: pointer; color: var(--gray-400); padding: 0; line-height: 1; font-size: 1rem; transition: color .15s; }
+    .ch-file-remove:hover { color: var(--red); }
+
+    /* checkbox */
     .ch-checkbox { display: flex; align-items: center; gap: 10px; cursor: pointer; }
     .ch-checkbox input[type="checkbox"] { width: 16px; height: 16px; accent-color: var(--red); flex-shrink: 0; cursor: pointer; }
     .ch-checkbox span { font-size: .88rem; color: var(--gray-600); }
+
+    /* form actions */
     .ch-form-actions { display: flex; align-items: center; gap: 16px; margin-top: 32px; }
-    .ch-btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--red); color: #fff; font-family: var(--font-body); font-weight: 700; font-size: .9rem; border: none; border-radius: 50px; padding: 13px 32px; cursor: pointer; transition: background .2s, transform .15s; }
+    .ch-btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--red); color: #fff;
+      font-family: var(--font-body); font-weight: 700; font-size: .9rem;
+      border: none; border-radius: 50px; padding: 13px 32px;
+      cursor: pointer; transition: background .2s, transform .15s;
+    }
     .ch-btn-primary:hover { background: var(--red-dark); transform: translateY(-1px); }
     .ch-btn-primary:disabled { opacity: .6; cursor: not-allowed; transform: none; }
 
-    /* success */
-    .ch-success { max-width: 540px; margin: 0 auto; background: var(--white); border-radius: var(--radius); padding: 56px 48px; text-align: center; box-shadow: var(--shadow-sm); }
-    .ch-success__check { width: 72px; height: 72px; border-radius: 50%; background: #e8f5e9; color: #2e7d32; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; }
+    /* ── SUCCESS VIEW ── */
+    .ch-success {
+      max-width: 540px; margin: 0 auto;
+      background: var(--white); border-radius: var(--radius);
+      padding: 56px 48px; text-align: center; box-shadow: var(--shadow-sm);
+    }
+    .ch-success__check {
+      width: 72px; height: 72px; border-radius: 50%;
+      background: #e8f5e9; color: #2e7d32;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 24px; font-size: 2rem;
+    }
     .ch-success h2 { font-size: 1.4rem; font-weight: 900; color: #1a1a1a; margin: 0 0 10px; }
     .ch-success__desc { font-size: .9rem; color: var(--gray-600); line-height: 1.7; margin: 0 0 32px; }
-    .ch-protocol-box { background: var(--gray-100); border: 2px dashed var(--gray-200); border-radius: 14px; padding: 24px; margin-bottom: 16px; }
+
+    .ch-protocol-box {
+      background: var(--gray-100); border: 2px dashed var(--gray-200);
+      border-radius: 14px; padding: 24px; margin-bottom: 16px;
+    }
     .ch-protocol-box__label { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--gray-400); margin-bottom: 10px; }
     .ch-protocol-number { display: block; font-size: 1.5rem; font-weight: 900; color: var(--red); font-family: monospace; letter-spacing: .08em; margin-bottom: 14px; }
-    .ch-copy-btn { display: inline-flex; align-items: center; gap: 6px; background: none; border: 1.5px solid var(--red); color: var(--red); font-family: var(--font-body); font-weight: 700; font-size: .82rem; border-radius: 50px; padding: 7px 18px; cursor: pointer; transition: background .2s, color .2s; }
+    .ch-copy-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: none; border: 1.5px solid var(--red); color: var(--red);
+      font-family: var(--font-body); font-weight: 700; font-size: .82rem;
+      border-radius: 50px; padding: 7px 18px; cursor: pointer;
+      transition: background .2s, color .2s;
+    }
     .ch-copy-btn:hover { background: var(--red); color: #fff; }
-    .ch-success__warn { font-size: .8rem; color: #b45309; background: #fffbeb; border: 1px solid #fde68a; border-radius: 8px; padding: 10px 14px; margin-bottom: 28px; display: flex; align-items: flex-start; gap: 8px; text-align: left; }
+
+    .ch-success__warn {
+      font-size: .8rem; color: #b45309;
+      background: #fffbeb; border: 1px solid #fde68a;
+      border-radius: 8px; padding: 10px 14px; margin-bottom: 28px;
+      display: flex; align-items: flex-start; gap: 8px; text-align: left;
+    }
     .ch-success__warn svg { flex-shrink: 0; margin-top: 1px; }
+
     .ch-success__actions { display: flex; flex-direction: column; gap: 10px; }
     .ch-success__actions .ch-btn-primary { justify-content: center; }
-    .ch-btn-ghost { background: none; border: 1.5px solid var(--gray-200); color: var(--gray-600); font-family: var(--font-body); font-weight: 700; font-size: .88rem; border-radius: 50px; padding: 11px 24px; cursor: pointer; transition: border-color .2s, color .2s; }
+    .ch-btn-ghost {
+      background: none; border: 1.5px solid var(--gray-200); color: var(--gray-600);
+      font-family: var(--font-body); font-weight: 700; font-size: .88rem;
+      border-radius: 50px; padding: 11px 24px; cursor: pointer;
+      transition: border-color .2s, color .2s;
+    }
     .ch-btn-ghost:hover { border-color: var(--gray-800); color: var(--gray-800); }
 
-    /* ticket view */
+    /* ── TICKET VIEW ── */
     .ch-ticket-wrap { max-width: 760px; margin: 0 auto; }
-    .ch-ticket-header { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; flex-wrap: wrap; }
-    .ch-ticket-header__proto { font-size: .8rem; font-weight: 700; font-family: monospace; color: var(--gray-400); letter-spacing: .05em; }
-    .ch-badge { display: inline-block; font-size: .7rem; font-weight: 800; text-transform: uppercase; letter-spacing: .1em; border-radius: 20px; padding: 4px 12px; }
-    .ch-badge--aberto    { background: #e3f2fd; color: #1565c0; }
-    .ch-badge--andamento { background: #fff3e0; color: #e65100; }
-    .ch-badge--resolvido { background: #e8f5e9; color: #2e7d32; }
-    .ch-badge--fechado   { background: var(--gray-100); color: var(--gray-600); }
-    .ch-ticket-info { background: var(--white); border-radius: var(--radius); padding: 28px 32px; margin-bottom: 20px; box-shadow: var(--shadow-sm); }
-    .ch-ticket-cat { display: inline-block; font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--red); background: rgba(150,2,15,.07); border-radius: 20px; padding: 4px 12px; margin-bottom: 12px; }
+    .ch-ticket-header {
+      display: flex; align-items: center; gap: 16px;
+      margin-bottom: 24px; flex-wrap: wrap;
+    }
+    .ch-ticket-header__proto {
+      font-size: .8rem; font-weight: 700; font-family: monospace;
+      color: var(--gray-400); letter-spacing: .05em;
+    }
+
+    /* status badges */
+    .ch-badge {
+      display: inline-block; font-size: .7rem; font-weight: 800;
+      text-transform: uppercase; letter-spacing: .1em;
+      border-radius: 20px; padding: 4px 12px;
+    }
+    .ch-badge--aberto      { background: #e3f2fd; color: #1565c0; }
+    .ch-badge--andamento   { background: #fff3e0; color: #e65100; }
+    .ch-badge--resolvido   { background: #e8f5e9; color: #2e7d32; }
+    .ch-badge--fechado     { background: var(--gray-100); color: var(--gray-600); }
+
+    .ch-ticket-info {
+      background: var(--white); border-radius: var(--radius);
+      padding: 28px 32px; margin-bottom: 20px;
+      box-shadow: var(--shadow-sm);
+    }
+    .ch-ticket-cat {
+      display: inline-block; font-size: .72rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .12em;
+      color: var(--red); background: rgba(150,2,15,.07);
+      border-radius: 20px; padding: 4px 12px; margin-bottom: 12px;
+    }
     .ch-ticket-subject { font-size: 1.2rem; font-weight: 900; color: #1a1a1a; margin: 0 0 8px; }
     .ch-ticket-date    { font-size: .78rem; color: var(--gray-400); }
-    /* ── CHAT THREAD ── */
-    .ch-messages { display: flex; flex-direction: column; gap: 4px; margin-bottom: 16px; background: var(--gray-100); border-radius: var(--radius); padding: 24px 20px; min-height: 120px; }
 
-    /* mensagem base — denunciante (direita) */
-    .ch-msg { display: flex; flex-direction: row-reverse; align-items: flex-end; gap: 8px; background: none; border-radius: 0; padding: 0; box-shadow: none; margin-bottom: 10px; }
-    /* mensagem admin (esquerda) */
-    .ch-msg--admin { flex-direction: row; border-left: none; }
-
-    /* agrupamento: mensagens consecutivas do mesmo lado ficam mais juntas */
-    .ch-msg + .ch-msg         { margin-top: -2px; }
-    .ch-msg--admin + .ch-msg  { margin-top: 12px; }
-    .ch-msg:not(.ch-msg--admin) + .ch-msg--admin { margin-top: 12px; }
-
-    .ch-msg__avatar { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; background: rgba(150,2,15,.1); color: var(--red); }
-    .ch-msg:not(.ch-msg--admin) .ch-msg__avatar { background: var(--gray-200); color: var(--gray-600); }
-
-    .ch-msg__body { max-width: 72%; display: flex; flex-direction: column; align-items: flex-end; }
-    .ch-msg--admin .ch-msg__body { align-items: flex-start; }
-
-    .ch-msg__meta { font-size: .7rem; color: var(--gray-400); margin-bottom: 4px; display: flex; gap: 6px; align-items: center; }
-    .ch-msg__author { font-weight: 700; font-size: .7rem; color: var(--gray-500); }
-    .ch-msg__author--admin { color: var(--red); }
-    .ch-msg__date { font-size: .7rem; color: var(--gray-400); }
-
-    /* bolha do denunciante */
-    .ch-msg__content { background: var(--red); color: #fff; border-radius: 18px 18px 4px 18px; padding: 10px 15px; font-size: .88rem; line-height: 1.65; white-space: pre-wrap; word-break: break-word; margin: 0; }
-    /* bolha do admin */
-    .ch-msg--admin .ch-msg__content { background: var(--white); color: #333; border-radius: 18px 18px 18px 4px; border: 1.5px solid var(--gray-200); box-shadow: 0 1px 3px rgba(0,0,0,.06); }
-
-    .ch-msg__attachments { margin-top: 6px; display: flex; flex-wrap: wrap; gap: 6px; }
-
-    /* ── REPLY - estilo chat input ── */
-    .ch-reply-wrap { background: var(--white); border-radius: var(--radius); padding: 16px 20px; box-shadow: var(--shadow-sm); display: flex; gap: 10px; align-items: flex-end; }
-    .ch-reply-wrap h3 { display: none; }
-    .ch-reply-wrap textarea { flex: 1; padding: 12px 16px; border: 1.5px solid var(--gray-200); border-radius: 24px; font-family: var(--font-body); font-size: .9rem; color: #1a1a1a; background: var(--white); resize: none; min-height: 48px; max-height: 160px; overflow-y: auto; transition: border-color .2s; margin-bottom: 0; line-height: 1.5; }
-    .ch-reply-wrap textarea:focus { outline: none; border-color: var(--red); }
-    #reply-btn { width: 44px; height: 44px; border-radius: 50%; padding: 0; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 0; }
-    #reply-btn svg { width: 17px; height: 17px; flex-shrink: 0; }
-    .ch-attachment { display: inline-flex; align-items: center; gap: 6px; font-size: .78rem; font-weight: 600; color: var(--red); background: rgba(150,2,15,.06); border: 1px solid rgba(150,2,15,.12); border-radius: 8px; padding: 5px 12px; text-decoration: none; transition: background .15s; }
-    .ch-attachment:hover { background: rgba(150,2,15,.12); }
-    .ch-reply-wrap { background: var(--white); border-radius: var(--radius); padding: 28px 32px; box-shadow: var(--shadow-sm); }
-    .ch-reply-wrap h3 { font-size: 1rem; font-weight: 800; color: #1a1a1a; margin: 0 0 18px; }
-    .ch-reply-wrap textarea { width: 100%; padding: 12px 16px; border: 1.5px solid var(--gray-200); border-radius: 10px; font-family: var(--font-body); font-size: .9rem; color: #1a1a1a; background: var(--white); resize: vertical; min-height: 100px; transition: border-color .2s; margin-bottom: 14px; }
-    .ch-reply-wrap textarea:focus { outline: none; border-color: var(--red); }
-    .ch-ticket-closed { text-align: center; padding: 20px; font-size: .88rem; color: var(--gray-400); }
-
-    @media (max-width: 860px) {
-      .etica-quando__grid { grid-template-columns: 1fr 1fr; }
-      .etica-quando__garantias { flex-wrap: wrap; }
-      .etica-quando__garantia + .etica-quando__garantia { border-left: none; border-top: 1.5px solid var(--gray-200); }
-      .ch-home { grid-template-columns: 1fr; }
+    /* messages thread */
+    .ch-messages { display: flex; flex-direction: column; gap: 14px; margin-bottom: 24px; }
+    .ch-msg {
+      background: var(--white); border-radius: 14px;
+      padding: 22px 24px; box-shadow: var(--shadow-sm);
+      display: flex; gap: 16px; align-items: flex-start;
     }
-    @media (max-width: 600px) {
-      .etica-quando__grid { grid-template-columns: 1fr; }
-      .etica-quando__garantia { min-width: 100%; }
-      .etica-hero__content { padding: 60px 0; }
+    .ch-msg--admin { border-left: 3px solid var(--red); }
+    .ch-msg__avatar {
+      width: 40px; height: 40px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; font-size: .88rem; font-weight: 700;
+      background: var(--gray-100); color: var(--gray-600);
+    }
+    .ch-msg--admin .ch-msg__avatar { background: rgba(150,2,15,.08); color: var(--red); }
+    .ch-msg__body { flex: 1; min-width: 0; }
+    .ch-msg__meta { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; flex-wrap: wrap; }
+    .ch-msg__author { font-weight: 700; font-size: .88rem; color: #1a1a1a; }
+    .ch-msg__author--admin { color: var(--red); }
+    .ch-msg__date   { font-size: .75rem; color: var(--gray-400); }
+    .ch-msg__content { font-size: .9rem; color: #444; line-height: 1.75; white-space: pre-wrap; word-break: break-word; }
+    .ch-msg__attachments { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 8px; }
+    .ch-attachment {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: .78rem; font-weight: 600; color: var(--red);
+      background: rgba(150,2,15,.06); border: 1px solid rgba(150,2,15,.12);
+      border-radius: 8px; padding: 5px 12px; text-decoration: none;
+      transition: background .15s;
+    }
+    .ch-attachment:hover { background: rgba(150,2,15,.12); }
+
+    /* reply form */
+    .ch-reply-wrap {
+      background: var(--white); border-radius: var(--radius);
+      padding: 28px 32px; box-shadow: var(--shadow-sm);
+    }
+    .ch-reply-wrap h3 { font-size: 1rem; font-weight: 800; color: #1a1a1a; margin: 0 0 18px; }
+    .ch-reply-wrap textarea {
+      width: 100%; padding: 12px 16px;
+      border: 1.5px solid var(--gray-200); border-radius: 10px;
+      font-family: var(--font-body); font-size: .9rem; color: #1a1a1a;
+      background: var(--white); resize: vertical; min-height: 100px;
+      transition: border-color .2s; margin-bottom: 14px;
+    }
+    .ch-reply-wrap textarea:focus { outline: none; border-color: var(--red); }
+    .ch-ticket-closed {
+      text-align: center; padding: 20px;
+      font-size: .88rem; color: var(--gray-400);
+    }
+
+    /* responsive */
+    @media (max-width: 780px) {
+      .ch-home { grid-template-columns: 1fr; }
       .ch-form-wrap { padding: 28px 20px; }
       .ch-success  { padding: 36px 20px; }
-      .ch-ticket-info { padding: 20px; }
-      .ch-msg__body { max-width: 85%; }
+      .ch-ticket-info, .ch-reply-wrap { padding: 20px; }
+      .ch-msg { padding: 16px 18px; gap: 12px; }
+    }
+    @media (max-width: 500px) {
       .ch-track-group { flex-direction: column; }
+      .ch-hero { height: 220px; }
     }
   </style>
 </head>
@@ -391,52 +395,33 @@
   </nav>
 
   <!-- HERO -->
-  <header class="etica-hero">
-    <div class="etica-hero__bg">
-      <img src="assets/canal de etica/banner-capa-canal-de-etica.webp" alt="Canal de Ética – COAPH" />
+  <header class="ch-hero">
+    <div class="ch-hero__bg">
+      <img src="assets/canal de etica/banner-capa-canal-de-etica.webp" alt="Portal de Chamados" />
     </div>
-    <div class="etica-hero__overlay"></div>
+    <div class="ch-hero__overlay"></div>
     <div class="container">
-      <div class="etica-hero__content">
-        <p class="etica-hero__breadcrumb"><a href="index.html">Início</a> <span>/</span> Fale Conosco <span>/</span> Canal de Ética</p>
-        <h1 class="etica-hero__title">Canal de <span>Ética</span></h1>
-        <p class="etica-hero__sub">Relate condutas antiéticas de forma segura, sigilosa e anônima.</p>
+      <div class="ch-hero__content">
+        <p class="ch-hero__breadcrumb">
+          <a href="index.html">Início</a><span>/</span>
+          <a href="canal-de-etica.html">Canal de Ética</a><span>/</span>
+          Portal de Chamados
+        </p>
+        <h1 class="ch-hero__title">Portal de Chamados</h1>
+        <p class="ch-hero__sub">Registre ou acompanhe denúncias de forma segura e sigilosa.</p>
       </div>
     </div>
   </header>
 
-  <!-- PORTAL DE CHAMADOS -->
-  <section class="etica-portal" id="portal">
+  <!-- MAIN -->
+  <main class="ch-main">
     <div class="container">
-
-      <!-- Cabeçalho (visível apenas na view home) -->
-      <div class="etica-portal__header">
-        <h2 class="etica-cta__title">Registre sua denúncia</h2>
-        <p class="etica-cta__desc">Envie seu relato de forma segura e sigilosa. Respondemos em até 10 dias úteis.</p>
-        <div class="etica-cta__seals">
-          <span class="etica-cta__seal">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-            Sigiloso
-          </span>
-          <span class="etica-cta__seal">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-            Anônimo
-          </span>
-          <span class="etica-cta__seal">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            Seguro
-          </span>
-          <span class="etica-cta__seal">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-            Sem represálias
-          </span>
-        </div>
-      </div>
 
       <!-- ══ VIEW: HOME ══ -->
       <div id="view-home" class="ch-view active">
         <div class="ch-home">
 
+          <!-- Card: Novo chamado -->
           <div class="ch-opt">
             <div class="ch-opt__icon">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="13" x2="12" y2="17"/><line x1="10" y1="15" x2="14" y2="15"/></svg>
@@ -449,6 +434,7 @@
             </button>
           </div>
 
+          <!-- Card: Acompanhar -->
           <div class="ch-opt">
             <div class="ch-opt__icon">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
@@ -464,6 +450,11 @@
 
         </div>
 
+        <!-- Recentes (localStorage) -->
+        <div id="recent-section" class="ch-recent" style="display:none">
+          <p class="ch-recent__title">Chamados Recentes</p>
+          <div id="recent-list"></div>
+        </div>
       </div>
 
       <!-- ══ VIEW: NOVO CHAMADO ══ -->
@@ -474,6 +465,7 @@
             Voltar
           </button>
           <h2>Novo Chamado</h2>
+
           <form id="ticket-form">
             <div class="ch-field">
               <label for="f-category">Categoria <span style="color:var(--red)">*</span></label>
@@ -491,16 +483,19 @@
                 <option>Suborno</option>
               </select>
             </div>
+
             <div class="ch-field">
               <label for="f-subject">Assunto <span style="color:var(--red)">*</span></label>
               <input type="text" id="f-subject" name="subject" placeholder="Descreva brevemente o ocorrido" maxlength="200" required />
               <p class="ch-char-count"><span id="subject-count">0</span>/200</p>
             </div>
+
             <div class="ch-field">
               <label for="f-description">Descrição <span style="color:var(--red)">*</span></label>
               <textarea id="f-description" name="description" placeholder="Relate o que aconteceu, quando, onde e quem estava envolvido. Quanto mais detalhes, melhor." maxlength="8000" required></textarea>
               <p class="ch-char-count"><span id="desc-count">0</span>/8000</p>
             </div>
+
             <div class="ch-field">
               <label>Anexos <span style="color:var(--gray-400);font-weight:400">(opcional)</span></label>
               <div class="ch-file-zone" id="file-zone">
@@ -513,12 +508,14 @@
               <div class="ch-file-list" id="file-list"></div>
               <p class="ch-field__hint">Até 3 arquivos, máx. 16 MB cada — JPG, PNG, PDF, DOCX, MP4, ZIP</p>
             </div>
+
             <div class="ch-field">
               <label class="ch-checkbox">
                 <input type="checkbox" id="f-anonymous" name="anonymous" />
                 <span>Quero manter o anonimato</span>
               </label>
             </div>
+
             <div class="ch-form-actions">
               <button type="submit" class="ch-btn-primary" id="submit-btn">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
@@ -538,6 +535,7 @@
           </div>
           <h2>Chamado Registrado!</h2>
           <p class="ch-success__desc">Seu chamado foi registrado com sucesso. Guarde o número de protocolo abaixo — você precisará dele para acompanhar as respostas.</p>
+
           <div class="ch-protocol-box">
             <p class="ch-protocol-box__label">Número de Protocolo</p>
             <span class="ch-protocol-number" id="success-proto"></span>
@@ -546,10 +544,12 @@
               Copiar protocolo
             </button>
           </div>
+
           <div class="ch-success__warn">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
             <span>Sem este número de protocolo não será possível acessar o chamado novamente. Anote-o agora.</span>
           </div>
+
           <div class="ch-success__actions">
             <button class="ch-btn-primary" onclick="App.viewCurrentTicket()" style="justify-content:center">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
@@ -571,12 +571,15 @@
             <span class="ch-ticket-header__proto" id="tk-proto"></span>
             <span class="ch-badge" id="tk-badge"></span>
           </div>
+
           <div class="ch-ticket-info">
             <span class="ch-ticket-cat" id="tk-cat"></span>
             <h2 class="ch-ticket-subject" id="tk-subject"></h2>
             <span class="ch-ticket-date" id="tk-date"></span>
           </div>
+
           <div class="ch-messages" id="tk-messages"></div>
+
           <div id="tk-reply-wrap" class="ch-reply-wrap">
             <h3>Adicionar informação</h3>
             <textarea id="reply-text" placeholder="Acrescente detalhes ou informações complementares ao chamado..." maxlength="8000"></textarea>
@@ -590,108 +593,7 @@
       </div>
 
     </div>
-  </section>
-
-  <!-- QUANDO USAR -->
-  <section class="etica-quando">
-    <div class="container">
-      <div class="etica-quando__inner">
-        <h3 class="etica-quando__title">Quando utilizar este canal?</h3>
-        <div class="etica-quando__grid">
-
-          <div class="etica-case">
-            <div class="etica-case__icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
-            </div>
-            <p class="etica-case__title">Assédio moral ou sexual</p>
-            <p class="etica-case__desc">Comportamentos abusivos ou intimidadores no ambiente de trabalho.</p>
-          </div>
-
-          <div class="etica-case">
-            <div class="etica-case__icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-            </div>
-            <p class="etica-case__title">Corrupção, fraude ou suborno</p>
-            <p class="etica-case__desc">Uso indevido de recursos ou manipulação de informações.</p>
-          </div>
-
-          <div class="etica-case">
-            <div class="etica-case__icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-            </div>
-            <p class="etica-case__title">Conflitos de interesse</p>
-            <p class="etica-case__desc">Interesses pessoais que comprometam decisões da cooperativa.</p>
-          </div>
-
-          <div class="etica-case">
-            <div class="etica-case__icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            </div>
-            <p class="etica-case__title">Desvio de recursos</p>
-            <p class="etica-case__desc">Uso irregular de patrimônio ou recursos financeiros da COAPH.</p>
-          </div>
-
-          <div class="etica-case">
-            <div class="etica-case__icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-            </div>
-            <p class="etica-case__title">Discriminação e preconceito</p>
-            <p class="etica-case__desc">Condutas que violem a igualdade ou o respeito entre pessoas.</p>
-          </div>
-
-          <div class="etica-case">
-            <div class="etica-case__icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
-            </div>
-            <p class="etica-case__title">Outras condutas antiéticas</p>
-            <p class="etica-case__desc">Qualquer violação ao Código de Conduta e Ética da COAPH.</p>
-          </div>
-
-        </div>
-
-        <!-- garantias inline -->
-        <div class="etica-quando__garantias">
-          <div class="etica-quando__garantia">
-            <div class="etica-quando__garantia-icon">
-              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-            </div>
-            <div>
-              <p class="etica-quando__garantia-label">Sigiloso</p>
-              <p class="etica-quando__garantia-desc">Total confidencialidade.</p>
-            </div>
-          </div>
-          <div class="etica-quando__garantia">
-            <div class="etica-quando__garantia-icon">
-              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
-            </div>
-            <div>
-              <p class="etica-quando__garantia-label">Seguro</p>
-              <p class="etica-quando__garantia-desc">Sem represálias para denúncias de boa-fé.</p>
-            </div>
-          </div>
-          <div class="etica-quando__garantia">
-            <div class="etica-quando__garantia-icon">
-              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-            </div>
-            <div>
-              <p class="etica-quando__garantia-label">Anônimo</p>
-              <p class="etica-quando__garantia-desc">Identificação opcional.</p>
-            </div>
-          </div>
-          <div class="etica-quando__garantia">
-            <div class="etica-quando__garantia-icon">
-              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-            </div>
-            <div>
-              <p class="etica-quando__garantia-label">Investigado</p>
-              <p class="etica-quando__garantia-desc">Apurado por equipe independente.</p>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
+  </main>
 
   <!-- FOOTER -->
   <footer class="footer">
@@ -741,25 +643,54 @@
     'use strict';
 
     const API = 'api/tickets.php';
+    const LS_KEY = 'coaph_tickets';
     let currentProtocol = null;
 
+    /* ── LocalStorage helpers ───────────────────────────────── */
+    function lsGet() {
+      try { return JSON.parse(localStorage.getItem(LS_KEY) || '[]'); } catch { return []; }
+    }
+    function lsSave(arr) {
+      localStorage.setItem(LS_KEY, JSON.stringify(arr.slice(0, 10)));
+    }
+    function lsAdd(protocol, subject, category) {
+      const list = lsGet().filter(t => t.protocol !== protocol);
+      list.unshift({ protocol, subject, category, savedAt: new Date().toISOString() });
+      lsSave(list);
+    }
+
+    /* ── View management ────────────────────────────────────── */
     function show(view) {
       document.querySelectorAll('.ch-view').forEach(v => v.classList.remove('active'));
       document.getElementById('view-' + view).classList.add('active');
-      document.getElementById('portal').dataset.view = view;
-      window.scrollTo({ top: document.getElementById('portal').offsetTop - 80, behavior: 'smooth' });
+      window.scrollTo({ top: document.querySelector('.ch-main').offsetTop - 80, behavior: 'smooth' });
+      if (view === 'home') renderRecent();
     }
 
+    /* ── Helpers ─────────────────────────────────────────────── */
     function formatDate(str) {
       const d = new Date(str.replace(' ', 'T'));
       return isNaN(d) ? str : d.toLocaleString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' });
     }
-    function statusClass(s) {
-      return { 'Aberto': 'aberto', 'Em Andamento': 'andamento', 'Resolvido': 'resolvido', 'Fechado': 'fechado' }[s] || 'aberto';
+    function formatSize(n) {
+      if (n < 1024) return n + ' B';
+      if (n < 1048576) return (n / 1024).toFixed(1) + ' KB';
+      return (n / 1048576).toFixed(1) + ' MB';
     }
-    function showErr(id, msg) { const el = document.getElementById(id); el.textContent = msg; el.style.display = 'block'; }
-    function hideErr(id)      { const el = document.getElementById(id); el.textContent = '';  el.style.display = 'none'; }
+    function statusClass(s) {
+      const m = { 'Aberto': 'aberto', 'Em Andamento': 'andamento', 'Resolvido': 'resolvido', 'Fechado': 'fechado' };
+      return m[s] || 'aberto';
+    }
+    function showErr(id, msg) {
+      const el = document.getElementById(id);
+      el.textContent = msg; el.style.display = 'block';
+    }
+    function hideErr(id) {
+      const el = document.getElementById(id);
+      el.textContent = ''; el.style.display = 'none';
+    }
 
+    /* ── Render recent tickets ───────────────────────────────── */
     function renderRecent() {
       const list = lsGet();
       const section = document.getElementById('recent-section');
@@ -777,6 +708,7 @@
         </div>`).join('');
     }
 
+    /* ── Render ticket detail ────────────────────────────────── */
     function renderTicket(ticket) {
       currentProtocol = ticket.protocol;
       document.getElementById('tk-proto').textContent = ticket.protocol;
@@ -801,6 +733,11 @@
               <span class="ch-msg__date">${formatDate(m.date)}</span>
             </div>
             <p class="ch-msg__content">${m.content}</p>
+            ${(m.attachments || []).length ? `<div class="ch-msg__attachments">${m.attachments.map(a =>
+              `<a class="ch-attachment" href="data/tickets/attachments/${a.file}" target="_blank" rel="noopener">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
+                ${a.name} <span style="opacity:.6">${formatSize(a.size)}</span>
+              </a>`).join('')}</div>` : ''}
           </div>
         </div>`).join('');
 
@@ -810,11 +747,13 @@
       }
     }
 
+    /* ── Track ticket ────────────────────────────────────────── */
     async function track() {
       hideErr('track-err');
       const input = document.getElementById('track-input');
       const proto = input.value.trim().toUpperCase();
       if (!proto) { showErr('track-err', 'Informe o número de protocolo.'); return; }
+
       try {
         const res  = await fetch(`${API}?action=get&protocol=${encodeURIComponent(proto)}`);
         const data = await res.json();
@@ -822,34 +761,64 @@
         renderTicket(data);
         show('ticket');
         input.value = '';
-      } catch { showErr('track-err', 'Erro de conexão. Tente novamente.'); }
+      } catch {
+        showErr('track-err', 'Erro de conexão. Tente novamente.');
+      }
     }
 
+    async function openRecent(protocol) {
+      currentProtocol = protocol;
+      try {
+        const res  = await fetch(`${API}?action=get&protocol=${encodeURIComponent(protocol)}`);
+        const data = await res.json();
+        if (data.error) { alert(data.error); return; }
+        renderTicket(data);
+        show('ticket');
+      } catch {
+        alert('Erro de conexão.');
+      }
+    }
+
+    /* ── Submit new ticket ───────────────────────────────────── */
     document.getElementById('ticket-form').addEventListener('submit', async function (e) {
       e.preventDefault();
       hideErr('form-err');
+
       const btn = document.getElementById('submit-btn');
       btn.disabled = true;
       btn.innerHTML = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg> Enviando...';
+
       const fd = new FormData(this);
       fd.append('action', 'create');
       if (!document.getElementById('f-anonymous').checked) fd.delete('anonymous');
+
       try {
         const res  = await fetch(API, { method: 'POST', body: fd });
         const data = await res.json();
-        if (data.error) { showErr('form-err', data.error); return; }
+
+        if (data.error) {
+          showErr('form-err', data.error);
+          btn.disabled = false;
+          btn.innerHTML = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Enviar Chamado';
+          return;
+        }
+
         currentProtocol = data.protocol;
+        lsAdd(data.protocol, document.getElementById('f-subject').value, document.getElementById('f-category').value);
         document.getElementById('success-proto').textContent = data.protocol;
         this.reset();
         document.getElementById('file-list').innerHTML = '';
         show('success');
-      } catch { showErr('form-err', 'Erro de conexão. Tente novamente.'); }
-      finally {
+      } catch {
+        showErr('form-err', 'Erro de conexão. Tente novamente.');
+        btn.disabled = false;
+      } finally {
         btn.disabled = false;
         btn.innerHTML = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Enviar Chamado';
       }
     });
 
+    /* ── View current ticket (after success) ─────────────────── */
     async function viewCurrentTicket() {
       if (!currentProtocol) { show('home'); return; }
       try {
@@ -858,23 +827,31 @@
         if (data.error) { alert(data.error); return; }
         renderTicket(data);
         show('ticket');
-      } catch { alert('Erro de conexão.'); }
+      } catch {
+        alert('Erro de conexão.');
+      }
     }
 
+    /* ── Submit reply ────────────────────────────────────────── */
     async function submitReply() {
       hideErr('reply-err');
       const text = document.getElementById('reply-text').value.trim();
       if (!text) { showErr('reply-err', 'Escreva uma mensagem antes de enviar.'); return; }
+
       const btn = document.getElementById('reply-btn');
       btn.disabled = true;
+
       const fd = new FormData();
       fd.append('action', 'reply');
       fd.append('protocol', currentProtocol);
       fd.append('message', text);
+
       try {
         const res  = await fetch(API, { method: 'POST', body: fd });
         const data = await res.json();
+
         if (data.error) { showErr('reply-err', data.error); return; }
+
         document.getElementById('reply-text').value = '';
         const msgs = document.getElementById('tk-messages');
         const m = data.message;
@@ -893,10 +870,14 @@
           </div>`;
         msgs.appendChild(newMsg);
         newMsg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      } catch { showErr('reply-err', 'Erro de conexão. Tente novamente.'); }
-      finally { btn.disabled = false; }
+      } catch {
+        showErr('reply-err', 'Erro de conexão. Tente novamente.');
+      } finally {
+        btn.disabled = false;
+      }
     }
 
+    /* ── Copy protocol ───────────────────────────────────────── */
     function copyProtocol() {
       const proto = document.getElementById('success-proto').textContent;
       navigator.clipboard.writeText(proto).then(() => {
@@ -908,30 +889,40 @@
       });
     }
 
+    /* ── Char counters ───────────────────────────────────────── */
     document.getElementById('f-subject').addEventListener('input', function () {
       document.getElementById('subject-count').textContent = this.value.length;
     });
     document.getElementById('f-description').addEventListener('input', function () {
       document.getElementById('desc-count').textContent = this.value.length;
     });
+
+    /* ── File picker preview ─────────────────────────────────── */
     document.getElementById('f-attachments').addEventListener('change', function () {
       const list = document.getElementById('file-list');
       list.innerHTML = '';
-      Array.from(this.files).slice(0, 3).forEach(f => {
+      Array.from(this.files).slice(0, 3).forEach((f, i) => {
         const item = document.createElement('div');
         item.className = 'ch-file-item';
+        item.dataset.idx = i;
         item.innerHTML = `
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
           <span class="ch-file-item__name">${f.name}</span>
-          <span class="ch-file-item__size">${f.size < 1048576 ? (f.size/1024).toFixed(1)+' KB' : (f.size/1048576).toFixed(1)+' MB'}</span>`;
+          <span class="ch-file-item__size">${f.size < 1048576 ? (f.size / 1024).toFixed(1) + ' KB' : (f.size / 1048576).toFixed(1) + ' MB'}</span>`;
         list.appendChild(item);
       });
     });
+
+    /* ── Track input: enter key ──────────────────────────────── */
     document.getElementById('track-input').addEventListener('keydown', function (e) {
       if (e.key === 'Enter') App.track();
     });
 
-    window.App = { show, track, copyProtocol, submitReply, viewCurrentTicket };
+    /* ── Public API ──────────────────────────────────────────── */
+    window.App = { show, track, openRecent, copyProtocol, submitReply, viewCurrentTicket };
+
+    /* Init */
+    renderRecent();
   })();
   </script>
 </body>

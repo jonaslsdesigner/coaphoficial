@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
@@ -24,7 +24,7 @@
         </button>
       </div>
       <div class="topbar__actions">
-        <a href="pre-cadastro.html" aria-label="Minha Conta" class="topbar__action-icon-btn">
+        <a href="login.php" aria-label="Minha Conta" class="topbar__action-icon-btn">
           <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a6 6 0 0 1 12 0v2"/></svg>
         </a>
         <a href="#avisos" aria-label="Notificações" class="topbar__action-icon-btn">
@@ -349,13 +349,13 @@
       <div class="noticias__grid">
         <article class="noticias__card">
           <div class="noticias__thumb">
-            <span class="noticias__tag noticias__tag--dark">UNCATEGORIZED</span>
+            <span class="noticias__tag noticias__tag--dark">SAÚDE</span>
             <img src="assets/banners/inicio/ultimas noticias/01.png" alt="Hospital Hdoc: Serviço completo de Traumatologia" class="noticias__img" />
           </div>
           <div class="noticias__body">
             <h3>Hospital Hdoc: Serviço completo de Traumatologia</h3>
-            <a href="#" class="noticias__link">SAIBA MAIS</a>
-            <p class="noticias__meta">Janeiro 27, 2025 &bull; Nenhum comentário</p>
+            <a href="blog-traumatologia.html" class="noticias__link">SAIBA MAIS</a>
+            <p class="noticias__meta" data-comment-slug="traumatologia">Janeiro 27, 2025 &bull; Nenhum comentário</p>
           </div>
         </article>
         <article class="noticias__card">
@@ -365,8 +365,8 @@
           </div>
           <div class="noticias__body">
             <h3>Hdoc Lar, conheça nossos serviços</h3>
-            <a href="#" class="noticias__link">SAIBA MAIS</a>
-            <p class="noticias__meta">Janeiro 27, 2025 &bull; Nenhum comentário</p>
+            <a href="blog-hdoc-lar.html" class="noticias__link">SAIBA MAIS</a>
+            <p class="noticias__meta" data-comment-slug="hdoc-lar">Janeiro 27, 2025 &bull; Nenhum comentário</p>
           </div>
         </article>
         <article class="noticias__card">
@@ -376,13 +376,13 @@
           </div>
           <div class="noticias__body">
             <h3>Especialidades Hdoc Clínicas</h3>
-            <a href="#" class="noticias__link">SAIBA MAIS</a>
-            <p class="noticias__meta">Janeiro 24, 2025 &bull; Nenhum comentário</p>
+            <a href="blog-especialidades-clinicas.html" class="noticias__link">SAIBA MAIS</a>
+            <p class="noticias__meta" data-comment-slug="especialidades-clinicas">Janeiro 24, 2025 &bull; Nenhum comentário</p>
           </div>
         </article>
       </div>
       <div class="noticias__more">
-        <a href="#" class="btn noticias__more-btn">Mais notícias aqui</a>
+        <a href="blog.html" class="btn noticias__more-btn">Mais notícias aqui</a>
       </div>
     </div>
   </section>
@@ -497,5 +497,21 @@
       }, 5000);
     })();
   </script>
+  <script>
+  (function () {
+    document.querySelectorAll('[data-comment-slug]').forEach(function (el) {
+      var slug = el.getAttribute('data-comment-slug');
+      fetch('api/comments.php?post=' + encodeURIComponent(slug))
+        .then(function (r) { return r.json(); })
+        .then(function (data) {
+          var n = (data.comments || []).length;
+          var label = n === 0 ? 'Nenhum comentário' : n + (n === 1 ? ' comentário' : ' comentários');
+          el.innerHTML = el.innerHTML.replace(/Nenhum comentário|\d+ comentários?/, label);
+        })
+        .catch(function () {});
+    });
+  })();
+  </script>
 </body>
 </html>
+

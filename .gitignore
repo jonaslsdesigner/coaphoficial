@@ -1,0 +1,22 @@
+# Dados sensíveis
+data/tickets/*.json
+data/comments/*.json
+data/users.json
+data/ip_usernames.json
+
+# Uploads
+data/tickets/attachments/
+
+# Sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# XAMPP/PHP logs
+*.log
