@@ -184,11 +184,12 @@
   background: #f0f0f0;
   flex-shrink: 0;
   box-shadow: 0 4px 24px rgba(150,2,15,.15);
-  transition: transform .3s, box-shadow .3s;
+  transition: transform .3s, box-shadow .3s, border-color .2s;
 }
 
 .nep-equipe-section__member:hover .nep-equipe-section__photo {
   transform: translateY(-4px);
+  border-color: var(--red);
   box-shadow: 0 10px 36px rgba(150,2,15,.2);
 }
 

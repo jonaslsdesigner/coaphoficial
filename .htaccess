@@ -1,0 +1,11 @@
+# Desabilita cache para HTML e PHP — sempre busca versão nova
+<FilesMatch "\.(html|php)$">
+  Header set Cache-Control "no-cache, no-store, must-revalidate"
+  Header set Pragma "no-cache"
+  Header set Expires "0"
+</FilesMatch>
+
+# Cache longo para assets estáticos (JS, CSS, imagens)
+<FilesMatch "\.(js|css|png|jpg|jpeg|gif|webp|svg|woff2|woff)$">
+  Header set Cache-Control "public, max-age=31536000"
+</FilesMatch>

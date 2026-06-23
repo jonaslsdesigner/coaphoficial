@@ -348,6 +348,37 @@ document.addEventListener('DOMContentLoaded', () => {
     { sel: '.gv-cta__contacts',                   cls: 'reveal--right',  stagger: false },
     // Fala do Presidente
     { sel: '.fp-carta__inner',                    cls: '',               stagger: false },
+
+    // Clube COAPH+
+    { sel: '.clube-intro__title',                 cls: '',               stagger: false },
+    { sel: '.clube-intro__text',                  cls: '',               stagger: false },
+    { sel: '.clube-filtros',                      cls: '',               stagger: false },
+    { sel: '.clube-card',                         cls: '',               stagger: true  },
+
+    // NEP
+    { sel: '.nep-sobre__content',                 cls: 'reveal--right',  stagger: false },
+    { sel: '.nep-sobre__img-wrap',                cls: 'reveal--left',   stagger: false },
+    { sel: '.nep-sobre__stat',                    cls: '',               stagger: true  },
+    { sel: '.nep-equipe-section__header',         cls: '',               stagger: false },
+    { sel: '.nep-equipe-section__member',         cls: '',               stagger: true  },
+    { sel: '.nep-valores__header',                cls: '',               stagger: false },
+    { sel: '.nep-valores__item',                  cls: '',               stagger: true  },
+    { sel: '.nep-section-title',                  cls: '',               stagger: false },
+    { sel: '.nep-contato__text',                  cls: 'reveal--left',   stagger: false },
+    { sel: '.nep-contato__icon-wrap',             cls: 'reveal--right',  stagger: false },
+
+    // Blog
+    { sel: '.blog-posts__header',                 cls: '',               stagger: false },
+    { sel: '.blog-card',                          cls: '',               stagger: true  },
+    { sel: '.blog-instagram__header',             cls: '',               stagger: false },
+    { sel: '.blog-instagram__item',               cls: '',               stagger: true  },
+
+    // Canal de Ética
+    { sel: '.etica-portal__header',               cls: '',               stagger: false },
+    { sel: '.etica-cta__seal',                    cls: '',               stagger: true  },
+    { sel: '.etica-quando__title',                cls: '',               stagger: false },
+    { sel: '.etica-case',                         cls: '',               stagger: true  },
+    { sel: '.etica-quando__garantia',             cls: '',               stagger: true  },
   ];
 
   revealMap.forEach(({ sel, cls }) => {
@@ -487,10 +518,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     triggers.forEach(el => el.addEventListener('click', () => open(+el.dataset.lightbox)));
-    document.getElementById('lightboxClose').addEventListener('click', close);
-    document.getElementById('lightboxOverlay').addEventListener('click', close);
-    document.getElementById('lightboxPrev').addEventListener('click', () => goTo(current - 1));
-    document.getElementById('lightboxNext').addEventListener('click', () => goTo(current + 1));
+    document.getElementById('lightboxClose')?.addEventListener('click', close);
+    document.getElementById('lightboxOverlay')?.addEventListener('click', close);
+    document.getElementById('lightboxPrev')?.addEventListener('click', () => goTo(current - 1));
+    document.getElementById('lightboxNext')?.addEventListener('click', () => goTo(current + 1));
 
     document.addEventListener('keydown', e => {
       if (!lb.classList.contains('open')) return;
@@ -500,8 +531,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }());
 
-  /* ── FADE TO LINK (Portal do Cooperado) ────────────── */
-  document.querySelectorAll('.js-fade-link').forEach(link => {
+  /* ── FADE TO LINK (Portal do Cooperado + CRM) ──────── */
+  function attachFade(link) {
     link.addEventListener('click', (e) => {
       e.preventDefault();
       const overlay = document.createElement('div');
@@ -512,7 +543,9 @@ document.addEventListener('DOMContentLoaded', () => {
         window.location.href = link.href;
       }, { once: true });
     });
-  });
+  }
+  document.querySelectorAll('.js-fade-link').forEach(attachFade);
+
 
   /* ── NOSSA ESTRUTURA — CARROSSEL INFINITO (Pré-Cadastro) ── */
   (function () {
@@ -706,5 +739,49 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
+
+  /* ── AVATAR + PAINEL ADMIN (só para usuários logados) ── */
+  (function () {
+    const actions = document.querySelector('.topbar__actions');
+    if (!actions) return;
+
+    fetch('api/session.php')
+      .then(r => r.json())
+      .then(data => {
+        if (!data.loggedIn) return;
+
+        // Troca o ícone "Minha Conta" pelo avatar
+        const accountBtn = actions.querySelector('a[aria-label="Minha Conta"]');
+        if (accountBtn) {
+          accountBtn.href  = 'conta.php';
+          accountBtn.setAttribute('aria-label', 'Minha Conta');
+          accountBtn.title = data.name || 'Minha Conta';
+          accountBtn.style.cssText = 'padding:0;border-radius:50%;overflow:hidden;width:34px;height:34px;display:flex;align-items:center;justify-content:center;';
+
+          if (data.avatar) {
+            accountBtn.innerHTML = `<img src="${data.avatar}?v=${Date.now()}" alt="Avatar" style="width:34px;height:34px;object-fit:cover;border-radius:50%;display:block;" />`;
+          } else {
+            const initial = (data.name || '?')[0].toUpperCase();
+            accountBtn.innerHTML = `<span style="width:34px;height:34px;border-radius:50%;background:#96020f;color:#fff;display:flex;align-items:center;justify-content:center;font-size:.82rem;font-weight:800;font-family:'DM Sans',sans-serif;">${initial}</span>`;
+          }
+        }
+
+        // Botão do Painel Admin — injeta apenas se não existir um hardcoded
+        if (!actions.querySelector('a[aria-label="Painel Admin"]')) {
+          const adminBtn = document.createElement('a');
+          adminBtn.href      = 'painel.php';
+          adminBtn.className = 'topbar__action-icon-btn js-fade-link';
+          adminBtn.setAttribute('aria-label', 'Painel Admin');
+          adminBtn.title     = 'Painel Admin';
+          adminBtn.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>`;
+          // Insere antes do Minha Conta (último); se não encontrar, appenda
+          const ref = actions.querySelector('a[aria-label="Minha Conta"]');
+          if (ref) actions.insertBefore(adminBtn, ref);
+          else actions.appendChild(adminBtn);
+          attachFade(adminBtn);
+        }
+      })
+      .catch(() => {});
+  }());
 
 });
